@@ -6,11 +6,11 @@ export default class App extends Component {
     super();
     this.state = {
       colors: [
-        {name: 'color-primary-lighter', value: '#112233' },
-        {name: 'color-primary-light', value: '#223344' },
-        {name: 'color-primary', value: '#334455' },
-        {name: 'color-primary-dark', value: '#445566' },
-        {name: 'color-primary-daker', value: '#556677' }
+        {name: 'color-primary-lighter', value: '#eeeeee' },
+        {name: 'color-primary-light', value: '#bbbbbb' },
+        {name: 'color-primary', value: '#888888' },
+        {name: 'color-primary-dark', value: '#555555' },
+        {name: 'color-primary-daker', value: '#222222' }
       ]
     }
   }
