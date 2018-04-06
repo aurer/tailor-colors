@@ -1,0 +1,57 @@
+// Base settings
+$base-font-size: 1rem;
+
+// Font families
+$font-primary: sans-serif;
+$font-secondary: sans-serif;
+$font-tertiary: sans-serif;
+
+// Breakpoints
+$widths: (
+	sm: 20em,
+	md: 36em,
+	lg: 52em,
+	xl: 68em
+);
+
+// Spacing
+$space: $base-font-size * 1.5;
+$space-xs: $space / 3;
+$space-sm: $space / 2;
+$space-md: $space * 1.5;
+$space-lg: $space * 2;
+$space-xl: $space * 3;
+
+// Grid
+$grid-columns: 8;
+$grid-font-size: 1rem;
+$grid-space: 1rem;
+
+// Primary colors
+$color-primary: #02A9CC;
+$color-primary-lighter: lighten($color-primary, 50%);
+$color-primary-light: lighten($color-primary, 30%);
+$color-primary-dark: darken($color-primary, 15%);
+$color-primary-darker: darken($color-primary, 25%);
+
+// Secondary colors
+$color-secondary: #01C4B3;
+$color-secondary-lighter: lighten($color-secondary, 50%);
+$color-secondary-light: lighten($color-secondary, 30%);
+$color-secondary-dark: darken($color-secondary, 15%);
+$color-secondary-darker: darken($color-secondary, 25%);
+
+// Neutral colors
+$color-neutral: mix($color-primary, #aaa, 10%);
+$color-white: lighten($color-neutral, 65%);
+$color-neutral-lighter: lighten($color-neutral, 30%);
+$color-neutral-light: lighten($color-neutral, 20%);
+$color-neutral-dark: darken($color-neutral, 15%);
+$color-neutral-darker: darken($color-neutral, 40%);
+$color-black: darken($color-neutral, 50%);
+
+// Message colors
+$color-message-info: #00a8f7;
+$color-message-success: #47b04a;
+$color-message-warning: #f5a800;
+$color-message-error: #f6412d;
