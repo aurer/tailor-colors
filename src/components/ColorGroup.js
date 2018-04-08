@@ -10,11 +10,11 @@ class ColorGroup extends Component {
     this.state = {
       title: title,
       colors: [
-        {name: `color-${name}-lighter`, value: '#eeeeee', override: false},
-        {name: `color-${name}-light`, value: '#bbbbbb', override: false},
-        {name: `color-${name}`, value: '#888888', override: true},
-        {name: `color-${name}-dark`, value: '#555555', override: false},
-        {name: `color-${name}-daker`, value: '#222222', override: false}
+        {name: `${name}-lighter`, value: '#eeeeee', override: false},
+        {name: `${name}-light`, value: '#bbbbbb', override: false},
+        {name: `${name}`, value: '#888888', override: true},
+        {name: `${name}-dark`, value: '#555555', override: false},
+        {name: `${name}-daker`, value: '#222222', override: false}
       ]
     }
   }
@@ -25,6 +25,11 @@ class ColorGroup extends Component {
         <h2>{title} colors</h2>
         <div className="ColorGroup-colors">
           {colors.map((color, index) => <ColorInput key={color.name} onColorChange={this.handleColorChange.bind(this)} onOverrideChange={this.handleOverrideChange.bind(this)} index={index} color={color} />)}
+        </div>
+        <div className="ColorGroup-code">
+          <textarea rows="5">
+            {colors.map((color, index) => `$color-${color.name}: ${color.value};\n` )}
+          </textarea>
         </div>
       </div>
     );
