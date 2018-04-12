@@ -14,7 +14,7 @@ class ColorGroup extends Component {
         {name: `${name}-light`, value: '#bbbbbb', override: false},
         {name: `${name}`, value: '#888888', override: true},
         {name: `${name}-dark`, value: '#555555', override: false},
-        {name: `${name}-daker`, value: '#222222', override: false}
+        {name: `${name}-darker`, value: '#222222', override: false}
       ]
     }
   }
@@ -24,11 +24,11 @@ class ColorGroup extends Component {
       <div className="ColorGroup">
         <h2>{title} colors</h2>
         <div className="ColorGroup-colors">
-          {colors.map((color, index) => <ColorInput key={color.name} onColorChange={this.handleColorChange.bind(this)} onOverrideChange={this.handleOverrideChange.bind(this)} index={index} color={color} />)}
+          { colors.map((color, index) => <ColorInput key={color.name} onColorChange={this.handleColorChange.bind(this)} onOverrideChange={this.handleOverrideChange.bind(this)} index={index} color={color} />) }
         </div>
         <div className="ColorGroup-code">
           <textarea rows="5">
-            {colors.map((color, index) => `$color-${color.name}: ${color.value};\n` )}
+            { colors.slice().sort(c => c.name.indexOf('-')).map((color, index) => `$color-${color.name}: ${color.value};\n` ) }
           </textarea>
         </div>
       </div>

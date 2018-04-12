@@ -49,10 +49,10 @@ textarea,
 select {
   height: $space-md;
   padding: $space-xs $space-sm;
-  border: 1px solid $color-neutral-light;
+  border: 1px solid $color-neutral-dark;
   box-shadow: none;
-  background-color: $color-white;
-  color: $color-neutral-darker;
+  background-color: $color-black;
+  color: $color-white;
   line-height: normal;
   vertical-align: middle;
 

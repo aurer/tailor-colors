@@ -19,9 +19,10 @@ class ColorInput extends Component {
     let label = color.name;
     return (
       <div className="ColorInput" style={"--color:" + color.value}>
-        <label for={'field-' + color.name}>{label}</label>
+        <h2>{label}</h2>
         <div class="ColorInput-inputs">
           <input type="color" id={'field-' + color.name} name={'color-' + color.name} value={color.value} onChange={this.handleChange.bind(this)} disabled={!this.state.override} />
+          <label for={'field-' + color.name} onClick={this.activateOverride.bind(this)}>{label}</label>
           <input type="text" name={color.name} value={color.value} onChange={this.handleChange.bind(this)} disabled={!this.state.override} />
           <input type="checkbox" checked={this.state.override} onChange={this.toggleOverride.bind(this)} />
         </div>
@@ -32,6 +33,12 @@ class ColorInput extends Component {
   makeSassVar(color) {
     let name = '$' + color.name;
     return `${name}: ${color.value};`;
+  }
+
+  activateOverride(e) {
+    if (this.state.override === false) {
+      this.setState({override: true})
+    }
   }
 
   toggleOverride(e) {
