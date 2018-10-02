@@ -29,13 +29,14 @@
     height: 60px;
     border-radius: 30px;
     display: inline-block;
-    box-shadow: 0 2px 15px -1px rgba(#000, .7);
+    border: 2px solid $color-black;
+    box-shadow: 0 0 0 1px $color-neutral-dark;
     background-color: var(--color);
     cursor: pointer;
   }
 
   &-inputs {
-    padding: $space-sm;
+    padding: $space-xs;
   }
 
   [type=color] {

@@ -1,7 +1,7 @@
 {
   "scripts": {
-    "start": "rm -rf docs/* && parcel src/index.html -d docs",
-    "build": "rm -rf docs/* && parcel build src/index.html -d docs"
+    "start": "parcel src/app.js -d .",
+    "build": "parcel build src/app.js -d ."
   },
   "dependencies": {
     "preact": "^8.2.7",

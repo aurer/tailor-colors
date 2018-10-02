@@ -7,16 +7,15 @@ class ColorGroup extends Component {
     super(props);
     const title = props.group.title;
     const name = title.toLowerCase();
-    this.state = {
-      title: title,
-      colors: [
-        {name: `${name}-lighter`, value: '#eeeeee', override: false},
-        {name: `${name}-light`, value: '#bbbbbb', override: false},
-        {name: `${name}`, value: '#888888', override: true},
-        {name: `${name}-dark`, value: '#555555', override: false},
-        {name: `${name}-darker`, value: '#222222', override: false}
-      ]
-    }
+    const colors = [
+      {name: `${name}-lighter`, value: '#eeeeee', override: false},
+      {name: `${name}-light`, value: '#bbbbbb', override: false},
+      {name: `${name}`, value: '#888888', override: true},
+      {name: `${name}-dark`, value: '#555555', override: false},
+      {name: `${name}-darker`, value: '#222222', override: false}
+    ]
+    this.state = { title, colors }
+    this.props.onupdate(props.group.title, colors);
   }
 
   render(props, {title, colors}) {
@@ -96,6 +95,7 @@ class ColorGroup extends Component {
     }
 
     this.setState({colors});
+    this.props.onupdate(this.props.group.title, colors);
   }
 }
 
