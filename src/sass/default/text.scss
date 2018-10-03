@@ -28,7 +28,10 @@ h1, h2, h3, h4, h5, h6 {
 
 // Augmented 4th type scale (http://type-scale.com/)
 h1 {
-  font-size: 2.6em;
+  font-size: 2em;
+  font-weight: 400;
+  text-align: center;
+  margin: $space 0 0;
 }
 
 h2 {

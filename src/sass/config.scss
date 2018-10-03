@@ -2,9 +2,8 @@
 $base-font-size: 1rem;
 
 // Font families
-$font-primary: sans-serif;
+$font-primary: "Raleway", sans-serif;
 $font-secondary: sans-serif;
-$font-tertiary: sans-serif;
 
 // Breakpoints
 $widths: (
@@ -28,14 +27,14 @@ $grid-font-size: 1rem;
 $grid-space: 1rem;
 
 // Primary colors
-$color-primary: #1D8873;
+$color-primary: #374C68;
 $color-primary-lighter: #b3d8d1;
 $color-primary-light: #68b0a2;
 $color-primary-dark: #135b4d;
 $color-primary-daker: #092e27;
 
 // Secondary colors
-$color-secondary: #CB2B41;
+$color-secondary: #f80a2f;
 $color-secondary-lighter: #edb9bf;
 $color-secondary-light: #dc7280;
 $color-secondary-dark: #871d2b;
@@ -43,13 +42,13 @@ $color-secondary-daker: #430f15;
 
 
 // Neutral colors
-$color-neutral: mix($color-primary, #aaa, 10%);
-$color-white: lighten($color-neutral, 65%);
-$color-neutral-lighter: lighten($color-neutral, 30%);
-$color-neutral-light: lighten($color-neutral, 20%);
-$color-neutral-dark: darken($color-neutral, 15%);
-$color-neutral-darker: darken($color-neutral, 50%);
-$color-black: darken($color-neutral, 54%);
+$color-neutral-lighter: #e9e9e9;
+$color-neutral-light: #ccc;
+$color-neutral: #F6F9FC;
+$color-neutral-dark: #C0C8CF;
+$color-neutral-darker: #222;
+$color-white: #fff;
+$color-black: #111;
 
 // Message colors
 $color-message-info: #00a8f7;

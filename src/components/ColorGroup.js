@@ -21,7 +21,6 @@ class ColorGroup extends Component {
   render(props, {title, colors}) {
     return (
       <div className="ColorGroup">
-        <h2>{title} colors</h2>
         <div className="ColorGroup-colors">
           { colors.map((color, index) => <ColorInput key={color.name} onColorChange={this.handleColorChange.bind(this)} onOverrideChange={this.handleOverrideChange.bind(this)} index={index} color={color} />) }
         </div>
