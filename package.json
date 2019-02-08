@@ -1,17 +1,26 @@
 {
-  "scripts": {
-    "start": "parcel src/app.js -d .",
-    "build": "parcel build src/app.js -d ."
-  },
-  "dependencies": {
-    "preact": "^8.2.7",
-    "preact-compat": "^3.18.0",
-    "tinycolor2": "^1.4.1"
-  },
-  "devDependencies": {
-    "babel-preset-env": "^1.6.1",
-    "babel-preset-preact": "^1.1.0",
-    "node-sass": "^4.8.3",
-    "parcel-bundler": "^1.7.0"
-  }
+	"scripts": {
+		"sass": "npx sass src/sass/app.scss assets/app.css",
+		"sass-watch": "npx sass --watch src/sass/app.scss assets/app.css",
+		"build": "npm run sass && npx babel src/js --out-file assets/app.js --presets react-app/prod",
+		"watch": "npx babel --watch src/js -d assets --presets react-app/prod",
+		"serve": "hs .",
+		"start": "concurrently --kill-others \"npm run watch\" \"npm run sass-watch\"  \"npm run serve\""
+	},
+	"dependencies": {},
+	"devDependencies": {
+		"tinycolor2": "^1.4.1",
+		"webpack": "^4.29.3",
+		"sass": "^1.17.0",
+		"babel-cli": "^6.26.0",
+		"babel-preset-react-app": "^3.1.2",
+		"concurrently": "^4.1.0",
+		"http-server": "^0.11.1"
+	},
+	"standard": {
+		"globals": [
+			"React",
+			"ReactDOM"
+		]
+	}
 }
