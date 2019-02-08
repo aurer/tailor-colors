@@ -8,15 +8,16 @@ function _inherits(subClass, superClass) { if (typeof superClass !== "function" 
 
 import ColorGroup from './ColorGroup.js';
 import ColorGroupCss from './ColorGroupCss.js';
+import { updateColors } from '../actions/colors.js';
 var verbs = ['Primary', 'Secondary', 'Tertiary', 'Quaternary', 'Quinary', 'Senary'];
 
 var App = function (_React$Component) {
 	_inherits(App, _React$Component);
 
-	function App() {
+	function App(props) {
 		_classCallCheck(this, App);
 
-		var _this = _possibleConstructorReturn(this, (App.__proto__ || Object.getPrototypeOf(App)).call(this));
+		var _this = _possibleConstructorReturn(this, (App.__proto__ || Object.getPrototypeOf(App)).call(this, props));
 
 		_this.state = {
 			groups: [{ title: 'Primary', colors: [] }]
@@ -63,6 +64,8 @@ var App = function (_React$Component) {
 				return group;
 			});
 
+			this.props.dispatch(updateColors(groups));
+
 			this.setState({ groups: groups });
 		}
 	}]);
@@ -70,4 +73,4 @@ var App = function (_React$Component) {
 	return App;
 }(React.Component);
 
-export default App;
+export default ReactRedux.connect()(App);

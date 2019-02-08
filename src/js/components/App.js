@@ -1,10 +1,11 @@
 import ColorGroup from './ColorGroup.js';
 import ColorGroupCss from './ColorGroupCss.js';
+import { updateColors } from '../actions/colors.js';
 const verbs = ['Primary', 'Secondary', 'Tertiary', 'Quaternary', 'Quinary', 'Senary'];
 
-export default class App extends React.Component {
-	constructor() {
-		super();
+class App extends React.Component {
+	constructor(props) {
+		super(props);
 		this.state = {
 			groups: [{ title: 'Primary', colors: [] }]
 		};
@@ -43,6 +44,10 @@ export default class App extends React.Component {
 			return group;
 		});
 
+		this.props.dispatch(updateColors(groups));
+
 		this.setState({ groups });
 	}
 }
+
+export default ReactRedux.connect()(App);
