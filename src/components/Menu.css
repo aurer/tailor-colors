@@ -1,0 +1,31 @@
+.Menu .Menu-item {
+	display: flex;
+	flex-flow: row wrap;
+	border-top: 1px solid #ccc;
+}
+
+.Menu .Menu-item button {
+	margin-right: 0.5rem;
+	font-size: 1.5em;
+	border: none;
+	background-color: transparent;
+	outline: none;
+}
+
+.Menu .Menu-item button:hover {
+	background-color: rgba(0, 0, 0, 0.2);
+	cursor: pointer;
+}
+
+.Menu-item .Menu-title {
+	flex: 1;
+	padding: 0.5rem 1rem;
+}
+
+.Menu-item .Menu {
+	flex-basis: 100%;
+	padding-left: 1rem;
+}
+
+.Menu-item .Menu .Menu-item {
+}

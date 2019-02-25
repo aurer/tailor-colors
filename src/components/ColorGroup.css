@@ -1,0 +1,8 @@
+.ColorGroup {
+	display: flex;
+	flex-direction: row;
+}
+
+.ColorGroup:hover .Color label span {
+	opacity: 1;
+}

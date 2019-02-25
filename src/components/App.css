@@ -1,0 +1,16 @@
+.App {
+	display: grid;
+	grid-template-columns: auto 280px;
+	grid-template-areas: 'column-1 column-2';
+	height: 100vh;
+}
+
+.App .App-menu {
+	background-color: #fff;
+	grid-area: column-2;
+}
+
+.App .App-main {
+	background-color: #eee;
+	grid-area: column-1;
+}
