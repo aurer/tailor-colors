@@ -9,11 +9,11 @@ class Group {
 		this.id = uuid();
 		this.name = name;
 		this.colors = [
-			{ suffix: 'lighter', value: 'CCCCCC', auto: true },
-			{ suffix: 'light', value: '999999', auto: true },
-			{ suffix: '', value: '666666', auto: false },
-			{ suffix: 'dark', value: '444444', auto: true },
-			{ suffix: 'darker', value: '222222', auto: true }
+			{ suffix: 'lighter', value: 'd5d5d5', auto: true },
+			{ suffix: 'light', value: 'ababab', auto: true },
+			{ suffix: '', value: '818181', auto: false },
+			{ suffix: 'dark', value: '575757', auto: true },
+			{ suffix: 'darker', value: '2d2d2d', auto: true }
 		];
 		return this;
 	}

@@ -11,7 +11,7 @@ const Blend = function(from, to, steps) {
 		rgb: function() {
 			let result = [];
 			for (let i = 0; i < steps + 2; i++) {
-				result.push('rgb(' + colors.r[i] + ',' + colors.g[i] + ',' + colors.b[i] + ')');
+				result.push('(' + colors.r[i] + ',' + colors.g[i] + ',' + colors.b[i] + ')');
 			}
 			return result;
 		},
@@ -22,7 +22,7 @@ const Blend = function(from, to, steps) {
 				let r = '0' + colors.r[i].toString(16);
 				let g = '0' + colors.g[i].toString(16);
 				let b = '0' + colors.b[i].toString(16);
-				result.push('#' + r.slice(-2) + g.slice(-2) + b.slice(-2));
+				result.push(r.slice(-2) + g.slice(-2) + b.slice(-2));
 			}
 			return result;
 		}
