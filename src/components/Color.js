@@ -1,5 +1,6 @@
 import React from 'react';
-import './Color.css';
+import { colorName } from '../lib/Utilities';
+import '../styles/Color.css';
 
 class Color extends React.Component {
 	handleChange(e) {
@@ -12,11 +13,17 @@ class Color extends React.Component {
 	}
 
 	render() {
-		let name = this.props.color.suffix === '' ? this.props.group : `${this.props.group}-${this.props.color.suffix}`;
+		let name = colorName(this.props.group, this.props.color);
 		let color = '#' + this.sanitiseHexColor(this.props.color.value);
 		let style = { backgroundColor: color };
 		let disabled = this.props.color.auto ? 'disabled' : '';
-		let className = this.props.color.auto ? 'Color is-disabled' : 'Color ';
+		let className = 'Color';
+		if (this.props.pos === 2) {
+			className += ' Color--master';
+		} else {
+			className += this.props.color.auto ? ' Color--auto' : ' Color--locked';
+		}
+
 		return (
 			<div className={className}>
 				<div className="Color-swatch">

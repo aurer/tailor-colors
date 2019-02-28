@@ -1,6 +1,6 @@
 import React from 'react';
 import Color from './Color';
-import './ColorGroup.css';
+import '../styles/ColorGroup.css';
 
 class ColorGroup extends React.Component {
 	handleColorChange(name, newColor) {
@@ -10,11 +10,12 @@ class ColorGroup extends React.Component {
 	render() {
 		return (
 			<div className="ColorGroup">
-				{this.props.colors.map(color => (
+				{this.props.colors.map((color, i) => (
 					<Color
-						key={color.suffix}
+						key={color.suffix + i}
 						group={this.props.name}
 						color={color}
+						pos={i}
 						onChange={this.handleColorChange.bind(this)}
 					/>
 				))}

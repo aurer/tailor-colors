@@ -1,6 +1,6 @@
 import React from 'react';
 import { ColorContext } from '../contexts/ColorContext';
-import './Menu.css';
+import '../styles/Menu.css';
 
 function enableEditing(element, handler) {
 	element.setAttribute('contenteditable', true);
@@ -36,27 +36,25 @@ class Menu extends React.Component {
 
 	render() {
 		return (
-			<div className="App-menu">
-				<div className="Menu">
-					<ColorContext.Consumer>
-						{context => (
-							<div className="Menu-item">
-								<span className="Menu-title">Color groups</span>
-								<button onClick={context.addGroup}>+</button>
-								<div className="Menu">
-									{context.groups.map(group => (
-										<div className="Menu-item" key={group.id}>
-											<span className="Menu-title" onDoubleClick={e => this.handleDoubleClick(e, group.id)}>
-												{group.name}
-											</span>
-											<button onClick={context.removeGroup.bind(this, group.id)}>-</button>
-										</div>
-									))}
-								</div>
+			<div className="Menu">
+				<ColorContext.Consumer>
+					{context => (
+						<div className="Menu-item">
+							<span className="Menu-title">Color groups</span>
+							<button onClick={context.addGroup}>+</button>
+							<div className="Menu">
+								{context.groups.map(group => (
+									<div className="Menu-item" key={group.id}>
+										<span className="Menu-title" onDoubleClick={e => this.handleDoubleClick(e, group.id)}>
+											{group.name}
+										</span>
+										<button onClick={context.removeGroup.bind(this, group.id)}>-</button>
+									</div>
+								))}
 							</div>
-						)}
-					</ColorContext.Consumer>
-				</div>
+						</div>
+					)}
+				</ColorContext.Consumer>
 			</div>
 		);
 	}
