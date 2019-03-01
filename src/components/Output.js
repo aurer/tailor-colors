@@ -21,9 +21,19 @@ class Output extends React.Component {
 			<ColorContext.Consumer>
 				{context => (
 					<div className="Output">
+						<div className="Menu Menu--level1">
+							<div className="Menu-item">
+								<span className="Menu-title">Export</span>
+							</div>
+						</div>
 						<div className="Output-options">
 							{this.languages.map(lang => (
-								<span onClick={this.setLanguage.bind(this, lang)}>{lang}</span>
+								<span
+									className={lang === this.state.language && 'is-active'}
+									onClick={this.setLanguage.bind(this, lang)}
+								>
+									{lang}
+								</span>
 							))}
 						</div>
 						<div className="Output-code">
@@ -40,7 +50,7 @@ class Output extends React.Component {
 		}
 		return (
 			<pre>
-				// {group.name}
+				<span className="comment">{`// ${group.name}`}</span>
 				{group.colors.map(color => this.renderVar(group.name, color, language))}
 			</pre>
 		);

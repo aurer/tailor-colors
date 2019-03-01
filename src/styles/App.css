@@ -5,12 +5,14 @@
 	height: 100vh;
 }
 
-.App .App-menu {
-	background-color: #fff;
-	grid-area: column-2;
+.App .App-main {
+	grid-area: column-1;
 }
 
-.App .App-main {
-	background-color: #eee;
-	grid-area: column-1;
+.App .App-menu {
+	background-color: #2b2e31;
+	color: #fff;
+	border-left: 1px solid #212426;
+	grid-area: column-2;
+	z-index: 2;
 }

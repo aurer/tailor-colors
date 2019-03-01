@@ -36,26 +36,30 @@ class Menu extends React.Component {
 
 	render() {
 		return (
-			<div className="Menu">
-				<ColorContext.Consumer>
-					{context => (
+			<ColorContext.Consumer>
+				{context => (
+					<div className="Menu Menu--level1">
 						<div className="Menu-item">
 							<span className="Menu-title">Color groups</span>
-							<button onClick={context.addGroup}>+</button>
-							<div className="Menu">
-								{context.groups.map(group => (
-									<div className="Menu-item" key={group.id}>
-										<span className="Menu-title" onDoubleClick={e => this.handleDoubleClick(e, group.id)}>
-											{group.name}
-										</span>
-										<button onClick={context.removeGroup.bind(this, group.id)}>-</button>
-									</div>
-								))}
-							</div>
+							<button className="add" onClick={context.addGroup}>
+								+
+							</button>
 						</div>
-					)}
-				</ColorContext.Consumer>
-			</div>
+						<div className="Menu Menu--level2">
+							{context.groups.map(group => (
+								<div className="Menu-item" key={group.id}>
+									<span className="Menu-title" onDoubleClick={e => this.handleDoubleClick(e, group.id)}>
+										{group.name}
+									</span>
+									<button className="remove" onClick={context.removeGroup.bind(this, group.id)}>
+										-
+									</button>
+								</div>
+							))}
+						</div>
+					</div>
+				)}
+			</ColorContext.Consumer>
 		);
 	}
 }

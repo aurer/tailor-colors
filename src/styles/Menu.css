@@ -1,28 +1,52 @@
 .Menu .Menu-item {
 	display: flex;
 	flex-flow: row wrap;
-	border-top: 1px solid #ccc;
+	padding: 0.3rem 0.5rem;
+	font-size: 0.9rem;
+	align-items: center;
+}
+
+.Menu-item .Menu-title {
+	flex: 1;
+	padding: 0.5rem;
 }
 
 .Menu .Menu-item button {
 	margin-right: 0.5rem;
 	font-size: 1.5em;
+	line-height: 1;
 	border: none;
 	background-color: transparent;
 	outline: none;
-}
-
-.Menu .Menu-item button:hover {
-	background-color: rgba(0, 0, 0, 0.2);
+	color: inherit;
 	cursor: pointer;
+	border-radius: 2em;
+	transition: background-color 0.2s;
 }
 
-.Menu-item .Menu-title {
-	flex: 1;
-	padding: 0.5rem 1rem;
+button.add:hover {
+	background-color: #459a34;
 }
 
-.Menu-item .Menu {
-	flex-basis: 100%;
+button.remove:hover {
+	background-color: #9a4334;
+}
+
+.Menu--level1 > .Menu-item > .Menu-title {
+	text-transform: uppercase;
+	opacity: 0.4;
+	font-weight: bold;
+}
+
+.Menu--level2 {
 	padding-left: 1rem;
+}
+
+.Menu--level2 > .Menu-item > .Menu-title {
+	text-transform: capitalize;
+}
+
+.Menu--level2 .Menu-item {
+	border-top: 1px solid rgba(255, 255, 255, 0.2);
+	padding-left: 0;
 }
