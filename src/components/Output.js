@@ -38,7 +38,9 @@ class Output extends React.Component {
 							))}
 						</div>
 						<div className="Output-code">
-							{context.groups.map(group => this.renderVars(group, this.state.language))}
+							{this.state.language !== 'json' &&
+								context.groups.map(group => this.renderVars(group, this.state.language))}
+							{this.state.language === 'json' && this.renderJson(context.groups)}
 						</div>
 					</div>
 				)}
@@ -46,9 +48,16 @@ class Output extends React.Component {
 		);
 	}
 
+	renderJson(groups) {
+		groups = groups.map(group => {
+			delete group.id;
+			return group;
+		});
+
+		return <pre>{JSON.stringify(groups, null, '  ')}</pre>;
+	}
+
 	renderVars(group, language) {
-		if (language === 'json') {
-		}
 		return (
 			<pre key={group.name}>
 				<span className="comment">{`// ${group.name}`}</span>
