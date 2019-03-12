@@ -26,6 +26,7 @@ export class ColorProvider extends React.Component {
 		groups: [new Group(setGroupNames[0])],
 		addGroup: this.addGroup.bind(this),
 		removeGroup: this.removeGroup.bind(this),
+		renameGroup: this.renameGroup.bind(this),
 		updateColor: this.updateColor.bind(this),
 		updateMode: this.updateMode.bind(this)
 	};
@@ -43,6 +44,20 @@ export class ColorProvider extends React.Component {
 	removeGroup(id) {
 		let groups = this.state.groups;
 		groups = groups.filter(group => group.id !== id);
+		this.setState({ groups });
+	}
+
+	renameGroup(name, newName) {
+		let groups = this.state.groups.map(group => {
+			if (group.name === name) {
+				group.name = newName
+					.trim()
+					.toLowerCase()
+					.replace(' ', '-')
+					.replace(/\W/, '');
+			}
+			return group;
+		});
 		this.setState({ groups });
 	}
 

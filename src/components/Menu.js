@@ -1,37 +1,13 @@
 import React from 'react';
 import { ColorContext } from '../contexts/ColorContext';
+import Editable from './Editable';
 import '../styles/Menu.css';
 
-function enableEditing(element, handler) {
-	element.setAttribute('contenteditable', true);
-	element.focus();
-	element.addEventListener('keydown', handler);
-	element.addEventListener('blur', () => {
-		disableEditing(element, handler);
-	});
-}
-
-function disableEditing(element, handler) {
-	element.setAttribute('contenteditable', false);
-	element.removeEventListener('keyup', handler);
-	element.removeEventListener('blur', handler);
-}
-
 class Menu extends React.Component {
-	handleDoubleClick(e, id) {
-		if (e.target.contentEditable === 'true') {
-			disableEditing(e.target, this.handleRenaming);
-		} else {
-			enableEditing(e.target, this.handleRenaming);
-		}
-	}
+	static contextType = ColorContext;
 
-	handleRenaming(e) {
-		console.log(e);
-		if (e.key === 'Enter' || e.key === 'Escape') {
-			e.preventDefault();
-			disableEditing(e.target, this);
-		}
+	handleRename(name, newName) {
+		this.context.renameGroup(name, newName);
 	}
 
 	render() {
@@ -48,9 +24,9 @@ class Menu extends React.Component {
 						<div className="Menu Menu--level2">
 							{context.groups.map(group => (
 								<div className="Menu-item" key={group.id}>
-									<span className="Menu-title" onDoubleClick={e => this.handleDoubleClick(e, group.id)}>
+									<Editable className="Menu-title" onChange={this.handleRename.bind(this, group.name)}>
 										{group.name}
-									</span>
+									</Editable>
 									<button className="remove" onClick={context.removeGroup.bind(this, group.id)}>
 										-
 									</button>
