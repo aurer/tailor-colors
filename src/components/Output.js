@@ -29,7 +29,8 @@ class Output extends React.Component {
 						<div className="Output-options">
 							{this.languages.map(lang => (
 								<span
-									className={lang === this.state.language && 'is-active'}
+									key={lang}
+									className={lang === this.state.language ? 'is-active' : ''}
 									onClick={this.setLanguage.bind(this, lang)}
 								>
 									{lang}
@@ -49,32 +50,32 @@ class Output extends React.Component {
 		if (language === 'json') {
 		}
 		return (
-			<pre>
+			<pre key={group.name}>
 				<span className="comment">{`// ${group.name}`}</span>
 				{group.colors.map(color => this.renderVar(group.name, color, language))}
 			</pre>
 		);
 	}
-
 	renderVar(groupName, color, language) {
 		let string;
+		let name = colorName(groupName, color);
 
 		switch (language) {
 			case 'sass':
-				string = '$' + colorName(groupName, color) + ': #' + color.value + ';';
+				string = '$' + name + ': #' + color.value + ';';
 				break;
 
 			case 'less':
-				string = '@' + colorName(groupName, color) + ': #' + color.value + ';';
+				string = '@' + name + ': #' + color.value + ';';
 				break;
 
 			case 'css':
 			default:
-				string = '--' + colorName(groupName, color) + ': #' + color.value + ';';
+				string = '--' + name + ': #' + color.value + ';';
 				break;
 		}
 
-		return <div>{string}</div>;
+		return <div key={name}>{string}</div>;
 	}
 }
 

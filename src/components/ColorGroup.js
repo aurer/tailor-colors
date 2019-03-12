@@ -7,6 +7,10 @@ class ColorGroup extends React.Component {
 		this.props.context.updateColor(this.props.id, name, newColor);
 	}
 
+	handleColorChangeMode(name, checked) {
+		this.props.context.updateMode(this.props.id, name, checked);
+	}
+
 	render() {
 		return (
 			<div className="ColorGroup">
@@ -17,6 +21,7 @@ class ColorGroup extends React.Component {
 						color={color}
 						pos={i}
 						onChange={this.handleColorChange.bind(this)}
+						onChangeMode={this.handleColorChangeMode.bind(this)}
 					/>
 				))}
 			</div>

@@ -26,7 +26,8 @@ export class ColorProvider extends React.Component {
 		groups: [new Group(setGroupNames[0])],
 		addGroup: this.addGroup.bind(this),
 		removeGroup: this.removeGroup.bind(this),
-		updateColor: this.updateColor.bind(this)
+		updateColor: this.updateColor.bind(this),
+		updateMode: this.updateMode.bind(this)
 	};
 
 	addGroup() {
@@ -53,6 +54,24 @@ export class ColorProvider extends React.Component {
 				group.colors.forEach(color => {
 					if (color.suffix === colorSuffix) {
 						color.value = newValue;
+						color.auto = false;
+					}
+				});
+				this._generateColors(group);
+			}
+		});
+
+		this.setState({ groups });
+	}
+
+	updateMode(groupId, colorSuffix, checked) {
+		let groups = this.state.groups;
+
+		groups.forEach(group => {
+			if (group.id === groupId) {
+				group.colors.forEach(color => {
+					if (color.suffix === colorSuffix) {
+						color.auto = checked;
 					}
 				});
 				this._generateColors(group);
