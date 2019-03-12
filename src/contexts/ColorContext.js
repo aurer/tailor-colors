@@ -32,13 +32,25 @@ export class ColorProvider extends React.Component {
 	};
 
 	addGroup() {
-		let groupName = setGroupNames[this.state.groups.length];
+		let groupName = this.nextGroupName();
+		let existingNames = this.state.groups.filter(group => group.name === groupName);
+		if (existingNames.length) {
+			groupName = this.nextGroupName(1);
+		}
 		let newGroup = new Group(groupName);
 		let groups = this.state.groups;
 		groups.push(newGroup);
 		this.setState({
 			groups
 		});
+	}
+
+	nextGroupName(more = 0) {
+		let current = this.state.groups.length + more;
+		if (current < setGroupNames.length) {
+			return setGroupNames[current];
+		}
+		return 'Group' + (current + 1);
 	}
 
 	removeGroup(id) {
