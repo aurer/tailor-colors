@@ -1,7 +1,7 @@
 import React from 'react';
 import { ColorContext } from '../contexts/ColorContext';
 import Editable from './Editable';
-import '../styles/Menu.css';
+import '../styles/Menu.scss';
 
 class Menu extends React.Component {
 	static contextType = ColorContext;

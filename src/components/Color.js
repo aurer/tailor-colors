@@ -1,6 +1,6 @@
 import React from 'react';
 import { colorName } from '../lib/Utilities';
-import '../styles/Color.css';
+import '../styles/Color.scss';
 
 class Color extends React.Component {
 	componentWillReceiveProps(props) {

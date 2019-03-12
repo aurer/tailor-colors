@@ -1,0 +1,10 @@
+@import 'config';
+
+.ColorGroup {
+	display: flex;
+	flex-direction: row;
+
+	&:hover .Color label span {
+		opacity: 1;
+	}
+}

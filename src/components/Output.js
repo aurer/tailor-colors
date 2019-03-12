@@ -1,7 +1,7 @@
 import React from 'react';
 import { ColorContext } from '../contexts/ColorContext';
 import { colorName } from '../lib/Utilities';
-import '../styles/Output.css';
+import '../styles/Output.scss';
 
 class Output extends React.Component {
 	constructor(props) {

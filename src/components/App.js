@@ -3,7 +3,7 @@ import ColorGroups from './ColorGroups';
 import Menu from './Menu';
 import Output from './Output';
 import { ColorProvider } from '../contexts/ColorContext';
-import '../styles/App.css';
+import '../styles/App.scss';
 
 class App extends React.Component {
 	render() {

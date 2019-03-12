@@ -1,6 +1,6 @@
 import React from 'react';
 import Color from './Color';
-import '../styles/ColorGroup.css';
+import '../styles/ColorGroup.scss';
 
 class ColorGroup extends React.Component {
 	handleColorChange(name, newColor) {
