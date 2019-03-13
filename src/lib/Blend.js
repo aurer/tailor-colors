@@ -1,4 +1,4 @@
-const Blend = function(from, to, steps) {
+export const Blend = function(from, to, steps) {
 	let colors = {};
 	let fromRgb = hexToRgb(from);
 	let toRgb = hexToRgb(to);
@@ -61,4 +61,18 @@ const Blend = function(from, to, steps) {
 	}
 };
 
-export default Blend;
+export const GenerateColors = function(master, steps = 0) {
+	let setColors = [];
+	setColors.push(
+		...Blend('FFFFFF', master, 2 + steps)
+			.hex()
+			.slice(1 + steps, 3 + steps)
+	);
+	setColors.push(master);
+	setColors.push(
+		...Blend(master, '000000', 2 + steps)
+			.hex()
+			.slice(1, 3)
+	);
+	return setColors;
+};

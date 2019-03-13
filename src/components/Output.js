@@ -58,9 +58,13 @@ class Output extends React.Component {
 	}
 
 	renderVars(group, language) {
+		let name = `// ${group.name}`;
+		if (language === 'css') {
+			name = `/* ${group.name} */`;
+		}
 		return (
 			<pre key={group.name}>
-				<span className="comment">{`// ${group.name}`}</span>
+				<span className="comment">{name}</span>
 				{group.colors.map(color => this.renderVar(group.name, color, language))}
 			</pre>
 		);

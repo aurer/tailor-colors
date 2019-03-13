@@ -11,6 +11,10 @@ class ColorGroup extends React.Component {
 		this.props.context.updateMode(this.props.id, name, checked);
 	}
 
+	handleUpdateRange(e) {
+		this.props.context.updateRange(this.props.id, parseInt(e.target.value));
+	}
+
 	render() {
 		return (
 			<div className="ColorGroup">
@@ -24,6 +28,14 @@ class ColorGroup extends React.Component {
 						onChangeMode={this.handleColorChangeMode.bind(this)}
 					/>
 				))}
+				<input
+					className="ColorGroup-range"
+					type="range"
+					min="0"
+					max="6"
+					defaultValue="0"
+					onChange={this.handleUpdateRange.bind(this)}
+				/>
 			</div>
 		);
 	}

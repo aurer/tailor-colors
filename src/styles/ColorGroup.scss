@@ -3,8 +3,16 @@
 .ColorGroup {
 	display: flex;
 	flex-direction: row;
+	position: relative;
 
 	&:hover .Color label span {
 		opacity: 1;
+	}
+
+	.ColorGroup-range {
+		position: absolute;
+		left: 50%;
+		width: 20%;
+		transform: translateX(-50%);
 	}
 }
