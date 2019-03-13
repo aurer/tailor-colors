@@ -17,18 +17,18 @@ body {
 
 .App {
 	display: grid;
-	grid-template-columns: auto 280px;
+	grid-template-columns: 280px auto;
 	grid-template-areas: 'column-1 column-2';
 	height: 100vh;
 
 	&-main {
-		grid-area: column-1;
+		grid-area: column-2;
 	}
 
 	&-menu {
 		background-color: $color-neutral-darker;
 		color: #fff;
-		grid-area: column-2;
+		grid-area: column-1;
 		z-index: 2;
 	}
 }

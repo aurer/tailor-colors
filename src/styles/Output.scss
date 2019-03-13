@@ -1,12 +1,12 @@
 @import 'config';
 
 .Output {
-	border-top: 1px solid rgba(255, 255, 255, 0.2);
+	border-top: 1px solid $color-neutral;
 
 	&-options {
 		display: flex;
 		flex-direction: row;
-		border-top: 1px solid rgba(255, 255, 255, 0.2);
+		border-top: 1px solid $color-neutral;
 		padding: 0.5rem;
 
 		span {
@@ -26,7 +26,7 @@
 
 			&:hover,
 			&:focus {
-				background-color: $color-neutral-light;
+				background-color: $color-neutral;
 			}
 
 			&.is-active {
