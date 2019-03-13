@@ -1,20 +1,23 @@
 import React from 'react';
 import { uuid } from '../lib/Utilities';
-import Blend from '../lib/Blend';
+import { Blend, GenerateColors } from '../lib/Blend';
 
 export const ColorContext = React.createContext();
 
 class Group {
 	constructor(name) {
+		let colorValues = GenerateColors('818181');
 		this.id = uuid();
 		this.name = name;
+		this.fadeValue = 0;
 		this.colors = [
-			{ suffix: 'lighter', value: 'd5d5d5', auto: true },
-			{ suffix: 'light', value: 'ababab', auto: true },
-			{ suffix: '', value: '818181', auto: false },
-			{ suffix: 'dark', value: '575757', auto: true },
-			{ suffix: 'darker', value: '2d2d2d', auto: true }
+			{ suffix: 'lighter', value: colorValues[0], auto: true },
+			{ suffix: 'light', value: colorValues[1], auto: true },
+			{ suffix: '', value: colorValues[2], auto: false },
+			{ suffix: 'dark', value: colorValues[3], auto: true },
+			{ suffix: 'darker', value: colorValues[4], auto: true }
 		];
+
 		return this;
 	}
 }
@@ -28,7 +31,8 @@ export class ColorProvider extends React.Component {
 		removeGroup: this.removeGroup.bind(this),
 		renameGroup: this.renameGroup.bind(this),
 		updateColor: this.updateColor.bind(this),
-		updateMode: this.updateMode.bind(this)
+		updateMode: this.updateMode.bind(this),
+		updateRange: this.updateRange.bind(this)
 	};
 
 	addGroup() {
@@ -108,34 +112,35 @@ export class ColorProvider extends React.Component {
 		this.setState({ groups });
 	}
 
+	updateRange(groupId, value) {
+		let groups = this.state.groups.map(group => {
+			if (group.id === groupId) {
+				group.fadeValue = value;
+			}
+			this._generateColors(group);
+			return group;
+		});
+
+		this.setState({ groups });
+	}
+
 	_generateColors(group) {
-		let setColors = [];
-		setColors.push(
-			...Blend('FFFFFF', group.colors[2].value, 2)
-				.hex()
-				.slice(1, -1)
-		);
-		setColors.push(group.colors[2].value);
-		setColors.push(
-			...Blend(group.colors[2].value, '000000', 2)
-				.hex()
-				.slice(1, -1)
-		);
+		let setColors = GenerateColors(group.colors[2].value, group.fadeValue);
 
 		group.colors.forEach((color, i) => {
 			if (color.auto) {
 				let prev = group.colors[i - 1];
 				let next = group.colors[i + 1];
 
-				// First
-				if (!prev && !next.auto) {
-					return (color.value = Blend('FFFFFF', next.value, 1).hex()[1]);
-				}
+				// // First
+				// if (!prev && !next.auto) {
+				// 	return (color.value = Blend('FFFFFF', next.value, 1).hex()[1]);
+				// }
 
-				// Last
-				if (!next && !prev.auto) {
-					return (color.value = Blend('FFFFFF', prev.value, 1).hex()[1]);
-				}
+				// // Last
+				// if (!next && !prev.auto) {
+				// 	return (color.value = Blend('FFFFFF', prev.value, 1).hex()[1]);
+				// }
 
 				color.value = color.auto ? setColors[i] : color.value;
 			}

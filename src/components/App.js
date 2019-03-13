@@ -2,7 +2,7 @@ import React from 'react';
 import ColorGroups from './ColorGroups';
 import Menu from './Menu';
 import Output from './Output';
-import { ColorProvider } from '../contexts/ColorContext';
+import { ColorProvider } from './ColorContext';
 import '../styles/App.scss';
 
 class App extends React.Component {

@@ -1,5 +1,5 @@
 import React from 'react';
-import { ColorContext } from '../contexts/ColorContext';
+import { ColorContext } from './ColorContext';
 import ColorGroup from './ColorGroup';
 
 class ColorGroups extends React.Component {
