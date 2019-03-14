@@ -1,5 +1,15 @@
 @import 'config';
 
+@keyframes fadeInColor {
+	from {
+		opacity: 0;
+	}
+
+	to {
+		opacity: 1;
+	}
+}
+
 .Color {
 	display: flex;
 	flex-direction: column;
@@ -35,6 +45,7 @@
 			padding-top: 25%;
 			padding-bottom: 25%;
 			transition: background-color 0.5s ease-out;
+			animation: fadeInColor 0.8s ease-out;
 			cursor: pointer;
 
 			span {
@@ -84,5 +95,21 @@
 			margin-right: 0.2em;
 			opacity: 0.5;
 		}
+	}
+
+	&:nth-child(2) .Color-swatch label {
+		animation-duration: 1s;
+	}
+
+	&:nth-child(3) .Color-swatch label {
+		animation-duration: 1.2s;
+	}
+
+	&:nth-child(4) .Color-swatch label {
+		animation-duration: 1.4s;
+	}
+
+	&:nth-child(5) .Color-swatch label {
+		animation-duration: 1.6s;
 	}
 }

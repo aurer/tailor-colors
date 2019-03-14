@@ -26,7 +26,8 @@ body {
 	}
 
 	&-menu {
-		background-color: $color-neutral-darker;
+		background-color: $color-neutral-dark;
+		border-right: 1px solid $color-neutral;
 		color: #fff;
 		grid-area: column-1;
 		z-index: 2;

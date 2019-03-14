@@ -1,6 +1,7 @@
 import React from 'react';
 import { ColorContext } from './ColorContext';
 import Editable from './Editable';
+import { Add, Remove } from './Icons';
 import '../styles/Menu.scss';
 
 class Menu extends React.Component {
@@ -17,8 +18,8 @@ class Menu extends React.Component {
 					<div className="Menu Menu--level1">
 						<div className="Menu-item">
 							<span className="Menu-title">Color groups</span>
-							<button className="add" onClick={context.addGroup}>
-								+
+							<button className="Button" onClick={context.addGroup}>
+								<Add />
 							</button>
 						</div>
 						<div className="Menu Menu--level2">
@@ -27,8 +28,8 @@ class Menu extends React.Component {
 									<Editable className="Menu-title" onChange={this.handleRename.bind(this, group.name)}>
 										{group.name}
 									</Editable>
-									<button className="remove" onClick={context.removeGroup.bind(this, group.id)}>
-										-
+									<button className="Button" onClick={context.removeGroup.bind(this, group.id)}>
+										<Remove />
 									</button>
 								</div>
 							))}
