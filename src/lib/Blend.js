@@ -61,7 +61,7 @@ export const Blend = function(from, to, steps) {
 	}
 };
 
-export const GenerateColors = function(master, steps = 0) {
+export const GenerateGroupColors = function(master, steps = 0) {
 	let setColors = [];
 	setColors.push(
 		...Blend('FFFFFF', master, 2 + steps)
@@ -75,4 +75,18 @@ export const GenerateColors = function(master, steps = 0) {
 			.slice(1, 3)
 	);
 	return setColors;
+};
+
+export const Lighten = function(color, steps = 0) {
+	return Blend(color, 'FFFFFF', 1 + steps)
+		.hex()
+		.slice(1, 2)
+		.shift();
+};
+
+export const Darken = function(color, steps = 0) {
+	return Blend(color, '000000', 1 + steps)
+		.hex()
+		.slice(1, 2)
+		.shift();
 };

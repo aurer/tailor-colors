@@ -1,12 +1,12 @@
 import React from 'react';
 import { uuid } from '../lib/Utilities';
-import { Blend, GenerateColors } from '../lib/Blend';
+import { GenerateGroupColors, Lighten, Darken } from '../lib/Blend';
 
 export const ColorContext = React.createContext();
 
 class Group {
 	constructor(name) {
-		let colorValues = GenerateColors('818181');
+		let colorValues = GenerateGroupColors('818181');
 		this.id = uuid();
 		this.name = name;
 		this.fadeValue = 0;
@@ -125,22 +125,22 @@ export class ColorProvider extends React.Component {
 	}
 
 	_generateColors(group) {
-		let setColors = GenerateColors(group.colors[2].value, group.fadeValue);
+		let setColors = GenerateGroupColors(group.colors[2].value, group.fadeValue);
 
 		group.colors.forEach((color, i) => {
 			if (color.auto) {
 				let prev = group.colors[i - 1];
 				let next = group.colors[i + 1];
 
-				// // First
-				// if (!prev && !next.auto) {
-				// 	return (color.value = Blend('FFFFFF', next.value, 1).hex()[1]);
-				// }
+				// First
+				if (!prev && !next.auto) {
+					return (color.value = Lighten(next.value, group.fadeValue));
+				}
 
-				// // Last
-				// if (!next && !prev.auto) {
-				// 	return (color.value = Blend('FFFFFF', prev.value, 1).hex()[1]);
-				// }
+				// Last
+				if (!next && !prev.auto) {
+					return (color.value = Darken(prev.value, group.fadeValue));
+				}
 
 				color.value = color.auto ? setColors[i] : color.value;
 			}
