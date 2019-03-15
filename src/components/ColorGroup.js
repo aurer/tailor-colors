@@ -33,7 +33,7 @@ class ColorGroup extends React.Component {
 					type="range"
 					min="0"
 					max="6"
-					defaultValue="0"
+					defaultValue="3"
 					onChange={this.handleUpdateRange.bind(this)}
 				/>
 			</div>

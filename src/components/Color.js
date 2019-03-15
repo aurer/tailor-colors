@@ -1,6 +1,7 @@
 import React from 'react';
 import { colorName } from '../lib/Utilities';
 import '../styles/Color.scss';
+import { Lock } from './Icons';
 
 class Color extends React.Component {
 	componentWillReceiveProps(props) {
@@ -14,8 +15,10 @@ class Color extends React.Component {
 		this.props.onChange(this.props.color.suffix, value);
 	}
 
-	handleChangeMode(e) {
-		this.props.onChangeMode(this.props.color.suffix, e.target.checked);
+	handleUnlock() {
+		console.log('unlock');
+
+		this.props.onChangeMode(this.props.color.suffix, !this.props.color.auto);
 	}
 
 	sanitiseHexColor(color) {
@@ -34,6 +37,10 @@ class Color extends React.Component {
 			className += ' Color--master';
 		}
 
+		if (this.props.color.auto) {
+			className += ' Color--auto';
+		}
+
 		return (
 			<div className={className}>
 				<div className="Color-swatch">
@@ -45,9 +52,7 @@ class Color extends React.Component {
 				<div className="Color-settings">
 					<div className="Color-format">#</div>
 					<input type="text" value={this.props.color.value} onChange={this.handleChange.bind(this)} />
-					{master || (
-						<input type="checkbox" checked={this.props.color.auto} onChange={this.handleChangeMode.bind(this)} />
-					)}
+					{master || <Lock className="Color-lock" onClick={this.handleUnlock.bind(this)} />}
 				</div>
 			</div>
 		);

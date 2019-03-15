@@ -2,11 +2,7 @@
 
 @keyframes fadeInColor {
 	from {
-		opacity: 0;
-	}
-
-	to {
-		opacity: 1;
+		background-color: #000;
 	}
 }
 
@@ -42,26 +38,27 @@
 		label {
 			height: 100%;
 			display: flex;
-			padding-top: 25%;
-			padding-bottom: 25%;
+			padding-top: 50%;
 			transition: background-color 0.5s ease-out;
-			animation: fadeInColor 0.8s ease-out;
+			animation: fadeInColor 0.5s ease-out;
 			cursor: pointer;
+			overflow: hidden;
 
 			span {
-				display: inline-block;
+				display: block;
+				flex: 1;
 				margin: auto;
-				background-color: rgba(0, 0, 0, 0.5);
-				padding: 0.2rem 0.6rem 0.3rem;
-				border-radius: 2rem;
+				padding: 0.5rem 0.6rem;
+				background-color: rgba($color-neutral-darker, 0.5);
 				opacity: 0;
 				-webkit-user-select: none;
 				-moz-user-select: none;
 				-ms-user-select: none;
 				user-select: none;
 				pointer-events: none;
-				transition: opacity 0.2s;
-				font-size: 0.8em;
+				transition: opacity 0.2s ease-out;
+				font-size: 0.9em;
+				text-shadow: 0 0 12px $color-neutral-darker;
 			}
 		}
 	}
@@ -95,21 +92,5 @@
 			margin-right: 0.2em;
 			opacity: 0.5;
 		}
-	}
-
-	&:nth-child(2) .Color-swatch label {
-		animation-duration: 1s;
-	}
-
-	&:nth-child(3) .Color-swatch label {
-		animation-duration: 1.2s;
-	}
-
-	&:nth-child(4) .Color-swatch label {
-		animation-duration: 1.4s;
-	}
-
-	&:nth-child(5) .Color-swatch label {
-		animation-duration: 1.6s;
 	}
 }

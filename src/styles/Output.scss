@@ -1,12 +1,12 @@
 @import 'config';
 
 .Output {
-	border-top: 1px solid $color-neutral;
+	border-top: 1px solid $color-neutral-light;
 
 	&-options {
 		display: flex;
 		flex-direction: row;
-		border-top: 1px solid $color-neutral;
+		border-top: 1px solid $color-neutral-light;
 		padding: 0.5rem;
 
 		span {
@@ -15,7 +15,7 @@
 			margin: 0.3em;
 			text-align: center;
 			padding: 0.5em 0.8em;
-			background-color: $color-neutral;
+			background-color: $color-neutral-light;
 			color: #fff;
 			text-transform: uppercase;
 			line-height: 1;

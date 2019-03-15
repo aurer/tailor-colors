@@ -22,7 +22,7 @@
 			padding: 0;
 			border-radius: 2em;
 			transition: background-color 0.2s;
-			padding: 0.3rem;
+			padding: 7px;
 			display: flex;
 
 			svg {
@@ -30,7 +30,7 @@
 			}
 
 			&:hover {
-				background-color: $color-neutral-light;
+				background-color: $color-primary;
 			}
 		}
 	}
@@ -50,7 +50,7 @@
 	}
 
 	.Menu-item {
-		border-top: 1px solid $color-neutral;
+		border-top: 1px solid $color-neutral-light;
 		padding-left: 0;
 	}
 }

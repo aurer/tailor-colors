@@ -6,10 +6,10 @@ export const ColorContext = React.createContext();
 
 class Group {
 	constructor(name) {
-		let colorValues = GenerateGroupColors('818181');
+		let colorValues = GenerateGroupColors('344449', 3);
 		this.id = uuid();
 		this.name = name;
-		this.fadeValue = 0;
+		this.fadeValue = 3;
 		this.colors = [
 			{ suffix: 'lighter', value: colorValues[0], auto: true },
 			{ suffix: 'light', value: colorValues[1], auto: true },
