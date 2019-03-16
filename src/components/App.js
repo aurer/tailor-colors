@@ -1,7 +1,6 @@
 import React from 'react';
 import ColorGroups from './ColorGroups';
 import Menu from './Menu';
-import Output from './Output';
 import { ColorProvider } from './ColorContext';
 import '../styles/App.scss';
 
@@ -12,7 +11,6 @@ class App extends React.Component {
 				<div className="App">
 					<div className="App-menu">
 						<Menu />
-						<Output />
 					</div>
 					<div className="App-main">
 						<ColorGroups />

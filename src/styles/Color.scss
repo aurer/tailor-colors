@@ -36,29 +36,16 @@
 		}
 
 		label {
-			height: 100%;
 			display: flex;
 			padding-top: 50%;
+			min-height: 10rem;
 			transition: background-color 0.5s ease-out;
 			animation: fadeInColor 0.5s ease-out;
 			cursor: pointer;
 			overflow: hidden;
 
 			span {
-				display: block;
-				flex: 1;
-				margin: auto;
-				padding: 0.5rem 0.6rem;
-				background-color: rgba($color-neutral-darker, 0.5);
-				opacity: 0;
-				-webkit-user-select: none;
-				-moz-user-select: none;
-				-ms-user-select: none;
-				user-select: none;
-				pointer-events: none;
-				transition: opacity 0.2s ease-out;
-				font-size: 0.9em;
-				text-shadow: 0 0 12px $color-neutral-darker;
+				visibility: hidden;
 			}
 		}
 	}
@@ -70,6 +57,11 @@
 		flex-direction: row;
 		justify-content: center;
 		align-items: center;
+		position: relative;
+
+		@media screen and (max-width: $breakpoint) {
+			display: block;
+		}
 
 		input {
 			display: inline-block;
@@ -84,13 +76,63 @@
 			&:focus {
 				outline: none;
 			}
+
+			@media screen and (max-width: $breakpoint) {
+				width: 100%;
+				text-align: center;
+				margin-top: $space-xs;
+			}
 		}
 
 		.Color-format {
 			display: inline-block;
 			font-weight: bold;
 			margin-right: 0.2em;
-			opacity: 0.5;
+			font-size: 1.2em;
+			color: $color-neutral-lighter;
+			vertical-align: middle;
+		}
+	}
+
+	.Color-reset {
+		background-color: transparent;
+		border: none;
+		cursor: pointer;
+		fill: #fff;
+		position: absolute;
+		bottom: 3rem;
+		outline: none;
+		opacity: 0.5;
+		background-color: rgba($color-neutral-darker, 0.8);
+		border-radius: 15px;
+		width: 30px;
+		height: 30px;
+		padding: 5px;
+
+		svg {
+			width: 20px;
+			height: 20px;
+		}
+	}
+
+	.Color-range {
+		display: flex;
+		position: absolute;
+		left: 0;
+		right: 0;
+		bottom: 100%;
+		padding: $space-sm $space;
+		background-color: rgba($color-neutral-darker, 0.7);
+		opacity: 0;
+		transition: opacity 0.2s ease-out;
+
+		@import 'range';
+		input {
+			flex: 1;
+		}
+
+		@media screen and (max-width: $breakpoint) {
+			padding: $space-sm $space-xs;
 		}
 	}
 }

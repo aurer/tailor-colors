@@ -21,11 +21,6 @@ class Output extends React.Component {
 			<ColorContext.Consumer>
 				{context => (
 					<div className="Output">
-						<div className="Menu Menu--level1">
-							<div className="Menu-item">
-								<span className="Menu-title">Export</span>
-							</div>
-						</div>
 						<div className="Output-options">
 							{this.languages.map(lang => (
 								<span

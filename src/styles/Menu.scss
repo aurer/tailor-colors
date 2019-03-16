@@ -2,15 +2,20 @@
 
 .Menu {
 	.Menu-item {
-		display: flex;
-		flex-flow: row wrap;
-		padding: 0.3rem 0.5rem;
 		font-size: 0.9rem;
 		align-items: center;
+		border-top: 1px solid $color-neutral-light;
 
 		.Menu-title {
-			flex: 1;
+			display: flex;
+			flex-flow: row wrap;
+			align-items: center;
 			padding: 0.5rem;
+
+			b {
+				font-size: 0.9em;
+				flex: 1;
+			}
 		}
 
 		.Button {
@@ -36,10 +41,17 @@
 	}
 }
 
-.Menu--level1 > .Menu-item > .Menu-title {
-	text-transform: uppercase;
-	opacity: 0.4;
-	font-weight: bold;
+.Menu--level1 {
+	> .Menu-item:first-of-type {
+		border-top: none;
+	}
+
+	> .Menu-item > .Menu-title {
+		b {
+			text-transform: uppercase;
+			opacity: 0.4;
+		}
+	}
 }
 
 .Menu--level2 {
@@ -52,5 +64,11 @@
 	.Menu-item {
 		border-top: 1px solid $color-neutral-light;
 		padding-left: 0;
+	}
+}
+
+@media screen and (max-width: $breakpoint) {
+	.Menu-item--export {
+		// display: none;
 	}
 }

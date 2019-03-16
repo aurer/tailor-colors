@@ -1,7 +1,7 @@
 import React from 'react';
 import { colorName } from '../lib/Utilities';
 import '../styles/Color.scss';
-import { Lock } from './Icons';
+import { Undo } from './Icons';
 
 class Color extends React.Component {
 	componentWillReceiveProps(props) {
@@ -16,8 +16,6 @@ class Color extends React.Component {
 	}
 
 	handleUnlock() {
-		console.log('unlock');
-
 		this.props.onChangeMode(this.props.color.suffix, !this.props.color.auto);
 	}
 
@@ -31,6 +29,7 @@ class Color extends React.Component {
 		let style = { backgroundColor: color };
 		let className = 'Color';
 		let master = false;
+		let auto = this.props.color.auto;
 
 		if (this.props.pos === 2) {
 			master = true;
@@ -52,7 +51,12 @@ class Color extends React.Component {
 				<div className="Color-settings">
 					<div className="Color-format">#</div>
 					<input type="text" value={this.props.color.value} onChange={this.handleChange.bind(this)} />
-					{master || <Lock className="Color-lock" onClick={this.handleUnlock.bind(this)} />}
+					{!master && !auto && (
+						<button className="Color-reset" title="Reset color" onClick={this.handleUnlock.bind(this)}>
+							<Undo className="Color-lock" />
+						</button>
+					)}
+					{this.props.children}
 				</div>
 			</div>
 		);

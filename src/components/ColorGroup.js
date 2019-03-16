@@ -26,16 +26,21 @@ class ColorGroup extends React.Component {
 						pos={i}
 						onChange={this.handleColorChange.bind(this)}
 						onChangeMode={this.handleColorChangeMode.bind(this)}
-					/>
+					>
+						{i === 2 && (
+							<div className="Color-range">
+								<input
+									type="range"
+									min="0"
+									max="6"
+									defaultValue="3"
+									title="Contrast adjustment"
+									onChange={this.handleUpdateRange.bind(this)}
+								/>
+							</div>
+						)}
+					</Color>
 				))}
-				<input
-					className="ColorGroup-range"
-					type="range"
-					min="0"
-					max="6"
-					defaultValue="3"
-					onChange={this.handleUpdateRange.bind(this)}
-				/>
 			</div>
 		);
 	}

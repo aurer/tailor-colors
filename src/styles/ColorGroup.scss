@@ -5,14 +5,11 @@
 	flex-direction: row;
 	position: relative;
 
-	&:hover .Color label span {
-		opacity: 1;
-	}
-
-	.ColorGroup-range {
-		position: absolute;
-		left: 50%;
-		width: 20%;
-		transform: translateX(-50%);
+	&:hover {
+		.Color-reset,
+		.Color-range,
+		.Color label span {
+			opacity: 1;
+		}
 	}
 }

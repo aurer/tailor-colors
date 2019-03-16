@@ -1,12 +1,9 @@
 @import 'config';
 
 .Output {
-	border-top: 1px solid $color-neutral-light;
-
 	&-options {
 		display: flex;
 		flex-direction: row;
-		border-top: 1px solid $color-neutral-light;
 		padding: 0.5rem;
 
 		span {
@@ -37,5 +34,9 @@
 
 	&-code {
 		padding: 1rem;
+
+		pre {
+			margin: 0;
+		}
 	}
 }

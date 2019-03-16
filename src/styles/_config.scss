@@ -1,15 +1,21 @@
-$space: 1.4rem;
+$space: 1.5rem;
+$space-xs: $space / 4;
+$space-sm: $space / 2;
+$space-lg: $space * 2;
+$space-xl: $space * 4;
 
 // neutral
-$color-neutral-lighter: #5a5f64;
-$color-neutral-light: #393f45;
-$color-neutral: #1a2124;
-$color-neutral-dark: #161c1f;
-$color-neutral-darker: #12171a;
+$color-neutral-lighter: hsl(210, 17%, 35%);
+$color-neutral-light: hsl(210, 16%, 24%);
+$color-neutral: hsl(210, 15%, 18%);
+$color-neutral-dark: hsl(210, 17%, 12%);
+$color-neutral-darker: hsl(210, 18%, 9%);
 
 // primary
-$color-primary-lighter: #57bbab;
-$color-primary-light: #2daa96;
-$color-primary: #009b82;
-$color-primary-dark: #00816c;
-$color-primary-darker: #006756;
+$color-primary-lighter: hsl(170, 42%, 54%);
+$color-primary-light: hsl(170, 58%, 42%);
+$color-primary: hsl(170, 100%, 30%);
+$color-primary-dark: hsl(170, 100%, 25%);
+$color-primary-darker: hsl(170, 100%, 20%);
+
+$breakpoint: 850px;
