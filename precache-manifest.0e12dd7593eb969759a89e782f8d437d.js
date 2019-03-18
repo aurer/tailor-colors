@@ -16,7 +16,7 @@ self.__precacheManifest = [
     "url": "/tailor-colors/static/js/2.3210e2b1.chunk.js"
   },
   {
-    "revision": "fa57d11cd80e3df10c0e9c4875fa1fa6",
+    "revision": "4f2fad1fec79461929f08864ee54c4e9",
     "url": "/tailor-colors/index.html"
   }
 ];
