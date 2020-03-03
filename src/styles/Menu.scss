@@ -4,7 +4,6 @@
 	.Menu-item {
 		font-size: 0.9rem;
 		align-items: center;
-		border-top: 1px solid $color-neutral-light;
 
 		.Menu-title {
 			display: flex;
@@ -13,8 +12,11 @@
 			padding: 0.5rem;
 
 			b {
-				font-size: 0.9em;
 				flex: 1;
+			}
+
+			&:hover > .Button {
+				opacity: 1;
 			}
 		}
 
@@ -26,9 +28,10 @@
 			cursor: pointer;
 			padding: 0;
 			border-radius: 2em;
-			transition: background-color 0.2s;
+			transition: background-color 0.2s, opacity 0.2s;
 			padding: 7px;
 			display: flex;
+			opacity: 0;
 
 			svg {
 				margin: auto;
@@ -42,27 +45,26 @@
 }
 
 .Menu--level1 {
-	> .Menu-item:first-of-type {
-		border-top: none;
-	}
-
 	> .Menu-item > .Menu-title {
+		font-size: 0.85em;
+		text-transform:  uppercase;
+		letter-spacing: 0.1em;
+		padding-bottom: $space-sm;
+		padding-top: $space;
+		
 		b {
-			text-transform: uppercase;
 			opacity: 0.4;
 		}
 	}
 }
 
 .Menu--level2 {
-	padding-left: 1rem;
-
 	> .Menu-item > .Menu-title {
 		text-transform: capitalize;
+		font-size: 1.1em;
 	}
 
 	.Menu-item {
-		border-top: 1px solid $color-neutral-light;
 		padding-left: 0;
 	}
 }

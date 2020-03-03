@@ -28,6 +28,7 @@ export class ColorProvider extends React.Component {
 	state = {
 		groups: [new Group(setGroupNames[0])],
 		addGroup: this.addGroup.bind(this),
+		removeLast: this.removeLast.bind(this),
 		removeGroup: this.removeGroup.bind(this),
 		renameGroup: this.renameGroup.bind(this),
 		updateColor: this.updateColor.bind(this),
@@ -36,6 +37,7 @@ export class ColorProvider extends React.Component {
 	};
 
 	addGroup() {
+		console.log('Add group');
 		let groupName = this.nextGroupName();
 		let existingNames = this.state.groups.filter(group => group.name === groupName);
 		if (existingNames.length) {
@@ -60,6 +62,13 @@ export class ColorProvider extends React.Component {
 	removeGroup(id) {
 		let groups = this.state.groups;
 		groups = groups.filter(group => group.id !== id);
+		this.setState({ groups });
+	}
+
+	removeLast() {
+		console.log('Remove group');
+		let groups = this.state.groups;
+		groups.pop();
 		this.setState({ groups });
 	}
 

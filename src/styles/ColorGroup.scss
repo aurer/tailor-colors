@@ -13,3 +13,29 @@
 		}
 	}
 }
+
+.ColorGroup-footer {
+	text-align: center;
+	padding: $space-sm 0;
+}
+
+.ColorGroup-button {
+	border: none;
+	background: none;
+	padding: $space-sm $space;
+	cursor: pointer;
+	outline: none;
+	
+	svg {
+		width: 20px;
+		height: 20px;
+
+		path {
+			transition: fill .2s;
+		}
+	}
+
+	&:hover path {
+		fill: $color-primary;
+	}
+}

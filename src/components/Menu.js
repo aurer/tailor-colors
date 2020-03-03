@@ -10,17 +10,10 @@ class Menu extends React.Component {
 
 	constructor() {
 		super();
-		this.state = {
-			exportVisible: false
-		};
 	}
 
 	handleRename(name, newName) {
 		this.context.renameGroup(name, newName);
-	}
-
-	toggleExportVisible() {
-		this.setState({ exportVisible: !this.state.exportVisible });
 	}
 
 	render() {
@@ -36,13 +29,15 @@ class Menu extends React.Component {
 								</button>
 							</div>
 							<div className="Menu Menu--level2">
-								{context.groups.map(group => (
+								{context.groups.map((group, index) => (
 									<div className="Menu-item" key={group.id}>
 										<Editable className="Menu-title" onChange={this.handleRename.bind(this, group.name)}>
 											<b>{group.name}</b>
-											<button className="Button" onClick={context.removeGroup.bind(this, group.id)}>
-												<Remove />
-											</button>
+											{index > 0 && (
+												<button className="Button" onClick={context.removeGroup.bind(this, group.id)}>
+													<Remove />
+												</button>
+											)}
 										</Editable>
 									</div>
 								))}
@@ -51,11 +46,8 @@ class Menu extends React.Component {
 						<div className="Menu-item Menu-item--export">
 							<div className="Menu-title">
 								<b>Export</b>
-								<button className="Button" onClick={this.toggleExportVisible.bind(this)}>
-									{this.state.exportVisible ? <Remove /> : <Add />}
-								</button>
 							</div>
-							{this.state.exportVisible && <Output />}
+							<Output />
 						</div>
 					</div>
 				)}

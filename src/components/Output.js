@@ -33,8 +33,7 @@ class Output extends React.Component {
 							))}
 						</div>
 						<div className="Output-code">
-							{this.state.language !== 'json' &&
-								context.groups.map(group => this.renderVars(group, this.state.language))}
+							{this.state.language !== 'json' && context.groups.map(group => this.renderVars(group, this.state.language))}
 							{this.state.language === 'json' && this.renderJson(context.groups)}
 						</div>
 					</div>
@@ -53,17 +52,24 @@ class Output extends React.Component {
 	}
 
 	renderVars(group, language) {
-		let name = `// ${group.name}`;
+		let name = `// ${group.name} colors`;
+
 		if (language === 'css') {
-			name = `/* ${group.name} */`;
+			name = `/* ${group.name} colors */`;
 		}
+		
 		return (
-			<pre key={group.name}>
-				<span className="comment">{name}</span>
-				{group.colors.map(color => this.renderVar(group.name, color, language))}
-			</pre>
+			<React.Fragment key={group.name}>
+				<pre>
+					<span className="comment">{name}</span>
+					{group.colors.map(color => this.renderVar(group.name, color, language))}
+					<span className="spacer"></span>
+				</pre>
+				<br/>
+			</React.Fragment>
 		);
 	}
+
 	renderVar(groupName, color, language) {
 		let string;
 		let name = colorName(groupName, color);
