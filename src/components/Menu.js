@@ -8,10 +8,6 @@ import Output from './Output';
 class Menu extends React.Component {
 	static contextType = ColorContext;
 
-	constructor() {
-		super();
-	}
-
 	handleRename(name, newName) {
 		this.context.renameGroup(name, newName);
 	}

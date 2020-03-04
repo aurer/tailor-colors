@@ -23,13 +23,13 @@ class Output extends React.Component {
 					<div className="Output">
 						<div className="Output-options">
 							{this.languages.map(lang => (
-								<span
+								<button
 									key={lang}
 									className={lang === this.state.language ? 'is-active' : ''}
 									onClick={this.setLanguage.bind(this, lang)}
 								>
 									{lang}
-								</span>
+								</button>
 							))}
 						</div>
 						<div className="Output-code">
