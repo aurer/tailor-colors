@@ -8,7 +8,7 @@
 		"react-dom": "^16.8.3",
 		"react-scripts": "2.1.5"
 	},
-	"homepage": "https://aurer.github.io/tailor-colors/",
+	"homepage": "",
 	"scripts": {
 		"start": "react-scripts start",
 		"build": "react-scripts build",
