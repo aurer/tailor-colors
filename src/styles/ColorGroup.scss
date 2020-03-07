@@ -1,11 +1,49 @@
 @import 'config';
 
 .ColorGroup {
-	display: flex;
-	flex-direction: row;
 	position: relative;
 
+	.ColorGroup-title {
+		text-align: center;
+		font-size: 1em;
+		margin: 0;
+		position: absolute;
+		top: $space-xs;
+		left: 0;
+		right: 0;
+		z-index: 1;
+		padding: 0.3em 0;
+		opacity: 0;
+		transform: translateY(-5px);
+		transition: opacity .2s, transform .2s;
+		pointer-events: none;
+
+		div {
+			display: inline-block;
+			background-color: rgba($color-neutral-darker, 0.8);
+			color: #fff;
+			padding: 0.2rem $space-sm;
+			border-radius: 2em;
+			pointer-events: all;
+			font-size: .8em;
+			text-transform: uppercase;
+			line-height: 1;
+			letter-spacing: 0.1em;
+		}
+	}
+
+	.ColorGroup-colors {
+		position: relative;
+		flex-direction: row;
+		display: flex;
+	}
+
 	&:hover {
+		.ColorGroup-title {
+			opacity: 1;
+			transform: translateY(0);
+		}
+
 		.Color-reset,
 		.Color-range,
 		.Color label span {
@@ -60,9 +98,5 @@
 		path {
 			transition: fill .2s;
 		}
-	}
-
-	&:hover path {
-		// fill: $color-primary;
 	}
 }
