@@ -1,6 +1,6 @@
 input[type='range'] {
-	--colorLeft: #555;
-	--colorRight: #999;
+	--colorOne: #555;
+	--colorTwo: #999;
 	-webkit-appearance: none;
 	margin: $space-xs 0;
 	width: 100%;
@@ -21,13 +21,13 @@ input[type='range'] {
 	width: 18px;
 	border-radius: 10px;
 	background: $color-primary;
-	background: linear-gradient(to right, #555, #555 50%, #999 50%, #999);
+	background: linear-gradient(to left, #555, #555 50%, #999 50%, #999);
 	background: linear-gradient(
-		to right,
-		var(--colorLeft),
-		var(--colorLeft) 50%,
-		var(--colorRight) 50%,
-		var(--colorRight)
+		to left,
+		var(--colorOne),
+		var(--colorOne) 50%,
+		var(--colorTwo) 50%,
+		var(--colorTwo)
 	);
 	cursor: pointer;
 	-webkit-appearance: none;

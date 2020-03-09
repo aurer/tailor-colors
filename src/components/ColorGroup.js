@@ -4,6 +4,14 @@ import Editable from './Editable';
 import '../styles/ColorGroup.scss';
 
 class ColorGroup extends React.Component {
+	constructor(props) {
+		super(props);
+		this.state = {
+			rangeColorOne: '#222',
+			rangeColorTwo: '#666'
+		}
+	}
+
 	handleColorChange(name, newColor) {
 		this.props.context.updateColor(this.props.id, name, newColor);
 	}
@@ -14,6 +22,16 @@ class ColorGroup extends React.Component {
 
 	handleUpdateRange(e) {
 		this.props.context.updateRange(this.props.id, parseInt(e.target.value));
+		this.setRangeColors(e.target.value)
+	}
+
+	setRangeColors(contrastValue) {
+		let colorsOne = ['111', '121212', '202020', '222', '262626', '282828', '333'];
+		let colorsTwo = ['bbb', '999', '888', '777', '666', '555', '444'];
+		this.setState({
+			rangeColorOne: '#' + colorsOne[contrastValue],
+			rangeColorTwo: '#' + colorsTwo[contrastValue]
+		})
 	}
 
 	handleRename(name, newName) {
@@ -21,6 +39,11 @@ class ColorGroup extends React.Component {
 	}
 
 	render() {
+		let rangeStyle = {
+			'--colorOne': this.state.rangeColorOne,
+			'--colorTwo': this.state.rangeColorTwo
+		}
+
 		return (
 			<div className="ColorGroup">
 				<h2 className="ColorGroup-title">
@@ -39,6 +62,7 @@ class ColorGroup extends React.Component {
 							{i === 2 && (
 								<div className="Color-range">
 									<input
+										style={rangeStyle}
 										type="range"
 										min="0"
 										max="6"
