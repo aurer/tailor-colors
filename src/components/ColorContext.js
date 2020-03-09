@@ -5,8 +5,8 @@ import { GenerateGroupColors, Lighten, Darken } from '../lib/Blend';
 export const ColorContext = React.createContext();
 
 class Group {
-	constructor(name) {
-		let colorValues = GenerateGroupColors('344449', 3);
+	constructor(name, baseColor = '344449') {
+		let colorValues = GenerateGroupColors(baseColor, 3);
 		this.id = uuid();
 		this.name = name;
 		this.fadeValue = 3;
@@ -17,16 +17,19 @@ class Group {
 			{ suffix: 'dark', value: colorValues[3], auto: true },
 			{ suffix: 'darker', value: colorValues[4], auto: true }
 		];
-
 		return this;
 	}
 }
 
-export const setGroupNames = ['neutral', 'primary', 'secondary', 'tertiary', 'quaternary'];
+export const setGroupNames = ['neutral', 'primary', 'secondary', 'tertiary', 'quaternary', 'quinary'];
 
 export class ColorProvider extends React.Component {
 	state = {
-		groups: [new Group(setGroupNames[0])],
+		groups: [
+			new Group(setGroupNames[0], '344449'),
+			new Group(setGroupNames[1], '6e04f4'),
+			new Group(setGroupNames[2], 'f45c04'),
+		],
 		addGroup: this.addGroup.bind(this),
 		removeLast: this.removeLast.bind(this),
 		removeGroup: this.removeGroup.bind(this),
@@ -37,7 +40,6 @@ export class ColorProvider extends React.Component {
 	};
 
 	addGroup() {
-		console.log('Add group');
 		let groupName = this.nextGroupName();
 		let existingNames = this.state.groups.filter(group => group.name === groupName);
 		if (existingNames.length) {
@@ -66,7 +68,6 @@ export class ColorProvider extends React.Component {
 	}
 
 	removeLast() {
-		console.log('Remove group');
 		let groups = this.state.groups;
 		groups.pop();
 		this.setState({ groups });
