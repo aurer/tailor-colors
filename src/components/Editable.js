@@ -1,4 +1,45 @@
 import React from 'react';
+import { Edit } from './Icons';
+import '../styles/Editable.scss';
+
+class Editable extends React.Component {
+	handleDoubleClick(e) {
+		let element = e.target;
+		element.getAttribute('contenteditable') !== 'true'
+			? enableEditing(this.refs.input, this.handleInput.bind(this))
+			: disableEditing(this.refs.input);
+	}
+
+	handleClickEditIcon(e) {
+		enableEditing(this.refs.input, this.handleInput.bind(this));
+	}
+
+	handleInput(e) {
+		let element = e.target;
+		if (e.key === 'Enter') {
+			element.originalContent = element.innerText;
+			if (this.props.onChange) {
+				this.props.onChange(element.innerText);
+			}
+			disableEditing(e.target, this.handleInput);
+		}
+	}
+
+	render() {
+		let { value, ...props } = this.props;
+
+		return (
+			<div className="Editable" {...props}>
+				<span className="Editable-input" ref="input">
+					{this.props.value}
+				</span>
+				<button className="Editable-button" onClick={this.handleClickEditIcon.bind(this)}>
+					<Edit />
+				</button>
+			</div>
+		);
+	}
+}
 
 function disableEditing(element, handler) {
 	element.setAttribute('contenteditable', false);
@@ -22,38 +63,6 @@ function enableEditing(element, handler) {
 	element.addEventListener('blur', e => {
 		disableEditing(e.target);
 	});
-}
-
-class Editable extends React.Component {
-	handleDoubleClick(e) {
-		let element = e.target;
-		element.getAttribute('contenteditable') !== 'true'
-			? enableEditing(element, this.handleInput.bind(this))
-			: disableEditing(element);
-	}
-
-	handleInput(e) {
-		let element = e.target;
-		if (e.key === 'Enter') {
-			element.originalContent = element.innerText;
-			if (this.props.onChange) {
-				this.props.onChange(element.innerText);
-			}
-			disableEditing(e.target, this.handleInput);
-		}
-	}
-
-	render() {
-		let { tagName, ...props } = this.props;
-		return React.createElement(
-			tagName || 'div',
-			{
-				...props,
-				onDoubleClick: this.handleDoubleClick.bind(this)
-			},
-			this.props.children
-		);
-	}
 }
 
 export default Editable;

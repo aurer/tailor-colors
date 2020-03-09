@@ -121,9 +121,9 @@
 		right: 0;
 		bottom: 100%;
 		padding: $space-xs $space;
-		background-color: rgba($color-neutral-darker, 0.7);
 		opacity: 0;
-		transition: opacity 0.2s ease-out;
+		transform: translateY(5px);
+		transition: opacity 0.2s ease-out, transform 0.2s ease-out;
 
 		@import 'range';
 		input {

@@ -16,15 +16,15 @@ class ColorGroup extends React.Component {
 		this.props.context.updateRange(this.props.id, parseInt(e.target.value));
 	}
 
-	handleRename() {
-
+	handleRename(name, newName) {
+		this.props.context.renameGroup(name, newName);
 	}
 
 	render() {
 		return (
 			<div className="ColorGroup">
 				<h2 className="ColorGroup-title">
-				<Editable onChange={this.handleRename.bind(this, this.props.name)}>{this.props.name}</Editable>
+					<Editable onChange={this.handleRename.bind(this, this.props.name)} value={this.props.name} />
 				</h2>
 				<div className="ColorGroup-colors">
 					{this.props.colors.map((color, i) => (

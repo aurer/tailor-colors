@@ -1,4 +1,6 @@
 input[type='range'] {
+	--colorLeft: #555;
+	--colorRight: #999;
 	-webkit-appearance: none;
 	margin: $space-xs 0;
 	width: 100%;
@@ -8,7 +10,7 @@ input[type='range'] {
 	width: 100%;
 	height: 3px;
 	cursor: pointer;
-	background: $color-neutral-lighter;
+	background: $color-neutral-darker;
 	border-radius: 2px;
 }
 
@@ -19,6 +21,14 @@ input[type='range'] {
 	width: 18px;
 	border-radius: 10px;
 	background: $color-primary;
+	background: linear-gradient(to right, #555, #555 50%, #999 50%, #999);
+	background: linear-gradient(
+		to right,
+		var(--colorLeft),
+		var(--colorLeft) 50%,
+		var(--colorRight) 50%,
+		var(--colorRight)
+	);
 	cursor: pointer;
 	-webkit-appearance: none;
 	margin-top: -8px;
