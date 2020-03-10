@@ -9,11 +9,11 @@ class App extends React.Component {
 		return (
 			<ColorProvider>
 				<div className="App">
-					<div className="App-menu">
-						<Menu />
-					</div>
 					<div className="App-main">
 						<ColorGroups />
+					</div>
+					<div className="App-menu">
+						<Menu />
 					</div>
 				</div>
 			</ColorProvider>
