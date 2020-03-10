@@ -56,7 +56,7 @@
 
 	.Color-settings {
 		background-color: $color-neutral-darker;
-		padding: 0.5rem;
+		padding: $space-xxs $space-xs;
 		display: flex;
 		flex-direction: row;
 		justify-content: center;
@@ -66,7 +66,7 @@
 		@media screen and (max-width: $breakpoint) {
 			padding: 0.3rem;
 			display: block;
-			font-size: .8em;
+			font-size: 0.8em;
 		}
 
 		input {
@@ -78,6 +78,7 @@
 			font: inherit;
 			width: 5rem;
 			font-size: 0.9em;
+			line-height: $space-sm;
 
 			&:focus {
 				outline: none;
@@ -96,10 +97,11 @@
 			font-size: 1.2em;
 			color: $color-neutral-lighter;
 			vertical-align: middle;
+			line-height: $space-sm;
 
 			@media screen and (max-width: $breakpoint) {
 				line-height: 1;
-				font-size: .9em;
+				font-size: 0.9em;
 			}
 		}
 	}

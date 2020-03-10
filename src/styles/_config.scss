@@ -1,8 +1,10 @@
 $space: 1.5rem;
+$space-xxs: $space / 6;
 $space-xs: $space / 4;
 $space-sm: $space / 2;
 $space-lg: $space * 2;
 $space-xl: $space * 4;
+$space-xxl: $space * 6;
 
 // neutral
 $color-neutral-lighter: hsl(210, 17%, 35%);

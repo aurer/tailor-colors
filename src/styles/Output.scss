@@ -4,22 +4,31 @@
 	&-options {
 		display: flex;
 		flex-direction: row;
-		padding: 0.5rem;
+		padding: 0.5rem $space;
 
 		button {
 			display: inline-block;
 			flex: 1;
-			margin: 0.3em;
 			text-align: center;
-			padding: 0.5em 0.8em;
+			padding: $space-xs $space-sm;
 			background-color: $color-neutral-light;
 			color: #fff;
 			text-transform: uppercase;
 			border: none;
 			cursor: pointer;
-			border-radius: 2em;
 			transition: background-color 0.2s;
 			outline: none;
+			border: 1px solid $color-neutral-darker;
+			border-left: none;
+
+			&:first-child {
+				border-radius: 4px 0 0 4px;
+				border-left: 1px solid $color-neutral-darker;
+			}
+
+			&:last-child {
+				border-radius: 0 4px 4px 0;
+			}
 
 			&:hover,
 			&:focus {
@@ -33,7 +42,7 @@
 	}
 
 	&-code {
-		padding: 1rem;
+		padding: $space;
 
 		pre {
 			margin: 0;
@@ -48,6 +57,6 @@
 	pre {
 		font-family: 'Fira Code', monospace;
 		overflow: auto;
-		font-size: .8em;
+		font-size: 0.8em;
 	}
 }
