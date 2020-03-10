@@ -19,6 +19,7 @@
 			cursor: pointer;
 			border-radius: 2em;
 			transition: background-color 0.2s;
+			outline: none;
 
 			&:hover,
 			&:focus {
@@ -42,5 +43,11 @@
 		.comment {
 			opacity: 0.4;
 		}
+	}
+
+	pre {
+		font-family: 'Fira Code', monospace;
+		overflow: auto;
+		font-size: .8em;
 	}
 }
