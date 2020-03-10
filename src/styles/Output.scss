@@ -45,18 +45,15 @@
 		padding: $space;
 
 		pre {
+			font-family: 'Fira Code', monospace;
 			margin: 0;
 			line-height: 1.6;
+			overflow: auto;
+			font-size: 0.9em;
 		}
 
 		.comment {
-			opacity: 0.4;
+			color: $color-neutral-lighter;
 		}
-	}
-
-	pre {
-		font-family: 'Fira Code', monospace;
-		overflow: auto;
-		font-size: 0.8em;
 	}
 }

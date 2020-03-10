@@ -12,13 +12,18 @@ body {
 	box-sizing: border-box;
 }
 
+::selection {
+	background-color: $color-primary-light;
+	color: #fff;
+}
+
 .App {
 	display: grid;
 	grid-template-columns: auto 20rem;
 	height: 100vh;
 
 	&-menu {
-		background-color: $color-neutral-dark;
+		background-color: rgba(#fff, 0.02);
 		border-left: 1px solid $color-neutral-light;
 		color: #fff;
 		z-index: 2;

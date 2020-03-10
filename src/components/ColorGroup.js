@@ -1,6 +1,7 @@
 import React from 'react';
 import Color from './Color';
 import Editable from './Editable';
+import { Remove } from './Icons';
 import '../styles/ColorGroup.scss';
 
 class ColorGroup extends React.Component {
@@ -9,7 +10,7 @@ class ColorGroup extends React.Component {
 		this.state = {
 			rangeColorOne: '#222',
 			rangeColorTwo: '#666'
-		}
+		};
 	}
 
 	handleColorChange(name, newColor) {
@@ -22,7 +23,7 @@ class ColorGroup extends React.Component {
 
 	handleUpdateRange(e) {
 		this.props.context.updateRange(this.props.id, parseInt(e.target.value));
-		this.setRangeColors(e.target.value)
+		this.setRangeColors(e.target.value);
 	}
 
 	setRangeColors(contrastValue) {
@@ -31,7 +32,7 @@ class ColorGroup extends React.Component {
 		this.setState({
 			rangeColorOne: '#' + colorsOne[contrastValue],
 			rangeColorTwo: '#' + colorsTwo[contrastValue]
-		})
+		});
 	}
 
 	handleRename(name, newName) {
@@ -42,7 +43,7 @@ class ColorGroup extends React.Component {
 		let rangeStyle = {
 			'--colorOne': this.state.rangeColorOne,
 			'--colorTwo': this.state.rangeColorTwo
-		}
+		};
 
 		return (
 			<div className="ColorGroup">
@@ -74,6 +75,13 @@ class ColorGroup extends React.Component {
 							)}
 						</Color>
 					))}
+					<button
+						className="ColorGroup-remove"
+						title="Remove Hue"
+						onClick={this.props.context.removeGroup.bind(this, this.props.id)}
+					>
+						<Remove />
+					</button>
 				</div>
 			</div>
 		);

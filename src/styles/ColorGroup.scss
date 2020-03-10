@@ -2,6 +2,7 @@
 
 .ColorGroup {
 	position: relative;
+	box-shadow: 0 2px 10px rgba(#000, 0.2);
 
 	.ColorGroup-title {
 		text-align: center;
@@ -52,6 +53,12 @@
 		.Color label span {
 			opacity: 1;
 		}
+
+		.ColorGroup-remove {
+			pointer-events: all;
+			opacity: 1;
+			transform: translateX(0);
+		}
 	}
 }
 
@@ -60,18 +67,43 @@
 	padding: $space-sm 0;
 }
 
-.ColorGroup-button {
+.ColorGroup-remove {
+	position: absolute;
+	right: $space-sm;
+	top: $space-sm;
+	width: 26px;
+	height: 26px;
+	border-radius: 50%;
+	background-color: rgba(#000, 0.3);
+	border: none;
+	outline: none;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	transition: background 0.2s, opacity 0.2s, transform 0.2s;
+	cursor: pointer;
+	opacity: 0;
+	transform: translateX(5px);
+	pointer-events: none;
+
+	&:hover {
+		background-color: rgba(#000, 0.8);
+	}
+}
+
+.ColorGroup-add {
 	box-sizing: content-box;
 	border: none;
 	background: none;
-	margin: 0 $space;
+	margin: $space-sm $space;
 	padding: $space-sm $space-sm;
 	cursor: pointer;
 	outline: none;
 	border-radius: 10em;
 	position: relative;
-	width: 20px;
-	height: 20px;
+	background: $color-neutral;
+	box-shadow: 0 2px 10px rgba(#000, 0.3);
+	transition: background 0.2s, transform 0.2s, box-shadow 0.2s;
 
 	svg {
 		width: 20px;
@@ -86,8 +118,8 @@
 
 	&:hover,
 	&:focus {
-		path {
-			fill: $color-primary-light;
-		}
+		background: $color-primary-light;
+		box-shadow: 0 4px 15px rgba(#000, 0.3);
+		transform: translateY(-2px);
 	}
 }

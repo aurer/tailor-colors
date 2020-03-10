@@ -13,8 +13,9 @@ class ColorGroups extends React.Component {
 							<ColorGroup name={group.name} id={group.id} key={group.id} colors={group.colors} context={context} />
 						))}
 						<div className="ColorGroup-footer">
-							{context.groups.length > 1 && <button className="ColorGroup-button ColorGroup-button--remove" title="Remove hue" onClick={context.removeLast}><Remove /></button>}
-							<button className="ColorGroup-button ColorGroup-button--add" title="Add hue" onClick={context.addGroup}><Add /></button>
+							<button className="ColorGroup-add" title="Add hue" onClick={context.addGroup}>
+								<Add />
+							</button>
 						</div>
 					</React.Fragment>
 				)}

@@ -27,8 +27,8 @@ export class ColorProvider extends React.Component {
 	state = {
 		groups: [
 			new Group(setGroupNames[0], '344449'),
-			new Group(setGroupNames[1], '6e04f4'),
-			new Group(setGroupNames[2], 'f45c04'),
+			new Group(setGroupNames[1], '0380D2'),
+			new Group(setGroupNames[2], 'F44C04')
 		],
 		addGroup: this.addGroup.bind(this),
 		removeLast: this.removeLast.bind(this),

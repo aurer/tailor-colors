@@ -3,15 +3,18 @@ import React from 'react';
 export const Add = () => {
 	return (
 		<svg width="10" height="10" viewBox="0 0 10 10" fill="none" xmlns="http://www.w3.org/2000/svg">
-			<path d="M6 0H4V4H0V6H4V10H6V6H10V4H6V0Z" fill="white" />
+			<path fill="white" d="M6 0H4V4H0V6H4V10H6V6H10V4H6V0Z" />
 		</svg>
 	);
 };
 
 export const Remove = () => {
 	return (
-		<svg width="10" height="10" viewBox="0 0 10 2" fill="none" xmlns="http://www.w3.org/2000/svg">
-			<path d="M0 0H5.625H10V2H5.625H0V0Z" fill="white" />
+		<svg width="12" height="12" viewBox="0 0 12 12" fill="none" xmlns="http://www.w3.org/2000/svg">
+			<path
+				fill="white"
+				d="M4.49997 6L0 10.5L1.5 11.9999L5.99997 7.49999L10.5 12L12 10.5L7.49997 6L12 1.49999L10.5 0L5.99997 4.50001L1.5 5.46221e-05L0 1.50005L4.49997 6Z"
+			/>
 		</svg>
 	);
 };
