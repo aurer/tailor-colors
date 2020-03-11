@@ -1,6 +1,6 @@
 import React from 'react';
 import { ColorContext } from './ColorContext';
-import { colorName } from '../lib/Utilities';
+import { nameWithSuffix } from '../lib/Utilities';
 import '../styles/Output.scss';
 
 class Output extends React.Component {
@@ -72,7 +72,7 @@ class Output extends React.Component {
 
 	renderVar(groupName, color, language) {
 		let string;
-		let name = colorName(groupName, color);
+		let name = nameWithSuffix(groupName, color.suffix);
 
 		switch (language) {
 			case 'sass':

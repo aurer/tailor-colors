@@ -1,5 +1,5 @@
 import React from 'react';
-import { colorName } from '../lib/Utilities';
+import { nameWithSuffix } from '../lib/Utilities';
 import '../styles/Color.scss';
 import { Undo } from './Icons';
 
@@ -24,7 +24,7 @@ class Color extends React.Component {
 	}
 
 	render() {
-		let name = colorName(this.props.group, this.props.color);
+		let name = nameWithSuffix(this.props.group, this.props.color.suffix);
 		let color = '#' + this.sanitiseHexColor(this.props.color.value);
 		let style = { backgroundColor: color };
 		let className = 'Color';

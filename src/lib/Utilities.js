@@ -6,8 +6,10 @@ export const uuid = function() {
 	});
 };
 
-export const colorName = function(groupName, color) {
-	let name = 'color-' + groupName;
-	name += color.suffix.length ? '-' + color.suffix : '';
-	return name;
-};
+export const nameWithSuffix = function(name, suffix) {
+	let result = `color-${name}`;
+	if (suffix && suffix.length > 0) {
+		result += `-${suffix}`;
+	}
+	return result;
+}
