@@ -15,7 +15,7 @@ class App extends React.Component {
 
 	componentWillMount() {
 		let show = localStorage.showWelcome;
-		if (show == undefined || show == 'true') {
+		if (show === undefined || show === 'true') {
 			this.setState({
 				showWelcome: true
 			});

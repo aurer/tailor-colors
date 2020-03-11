@@ -1,7 +1,7 @@
 import React from 'react';
 import { ColorContext } from './ColorContext';
 import ColorGroup from './ColorGroup';
-import { Add, Remove } from './Icons';
+import { Add } from './Icons';
 
 class ColorGroups extends React.Component {
 	render() {
