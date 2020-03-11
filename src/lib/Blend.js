@@ -77,15 +77,15 @@ export const GenerateGroupColors = function(master, steps = 0) {
 	return setColors;
 };
 
-export const Lighten = function(color, steps = 0) {
-	return Blend(color, 'FFFFFF', 1 + steps)
+export const Lighten = function(hexColor, steps = 0) {
+	return Blend(hexColor, 'FFFFFF', 1 + steps)
 		.hex()
 		.slice(1, 2)
 		.shift();
 };
 
-export const Darken = function(color, steps = 0) {
-	return Blend(color, '000000', 1 + steps)
+export const Darken = function(hexColor, steps = 0) {
+	return Blend(hexColor, '000000', 1 + steps)
 		.hex()
 		.slice(1, 2)
 		.shift();

@@ -9,7 +9,7 @@ class Group {
 		let colorValues = GenerateGroupColors(baseColor, 3);
 		this.id = uuid();
 		this.name = name;
-		this.fadeValue = 3;
+		this.contrastValue = 3;
 		this.colors = [
 			{ suffix: 'lighter', value: colorValues[0], auto: true },
 			{ suffix: 'light', value: colorValues[1], auto: true },
@@ -122,10 +122,10 @@ export class ColorProvider extends React.Component {
 		this.setState({ groups });
 	}
 
-	updateRange(groupId, value) {
+	updateRange(groupId, contrastValue) {
 		let groups = this.state.groups.map(group => {
 			if (group.id === groupId) {
-				group.fadeValue = value;
+				group.contrastValue = contrastValue;
 			}
 			this._generateColors(group);
 			return group;
@@ -135,7 +135,7 @@ export class ColorProvider extends React.Component {
 	}
 
 	_generateColors(group) {
-		let setColors = GenerateGroupColors(group.colors[2].value, group.fadeValue);
+		let setColors = GenerateGroupColors(group.colors[2].value, group.contrastValue);
 
 		group.colors.forEach((color, i) => {
 			if (color.auto) {
@@ -144,12 +144,12 @@ export class ColorProvider extends React.Component {
 
 				// First
 				if (!prev && !next.auto) {
-					return (color.value = Lighten(next.value, group.fadeValue));
+					return (color.value = Lighten(next.value, group.contrastValue));
 				}
 
 				// Last
 				if (!next && !prev.auto) {
-					return (color.value = Darken(prev.value, group.fadeValue));
+					return (color.value = Darken(prev.value, group.contrastValue));
 				}
 
 				color.value = color.auto ? setColors[i] : color.value;
