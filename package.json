@@ -1,20 +1,16 @@
 {
-	"name": "tailor-colors",
+	"name": "huely",
 	"version": "0.1.0",
 	"private": true,
 	"dependencies": {
-		"node-sass": "^4.11.0",
-		"react": "^16.8.3",
-		"react-dom": "^16.8.3",
-		"react-scripts": "2.1.5"
+		"react": "^16.13.0",
+		"react-dom": "^16.13.0"
 	},
 	"homepage": "",
 	"scripts": {
 		"start": "react-scripts start",
 		"build": "react-scripts build",
-		"test": "react-scripts test",
-		"predeploy": "yarn run build",
-		"deploy": "gh-pages -d build"
+		"test": "react-scripts test"
 	},
 	"eslintConfig": {
 		"extends": "react-app"
@@ -26,6 +22,7 @@
 		"not op_mini all"
 	],
 	"devDependencies": {
-		"gh-pages": "^2.0.1"
+		"react-scripts": "^3.4.0",
+		"sass": "^1.26.3"
 	}
 }
