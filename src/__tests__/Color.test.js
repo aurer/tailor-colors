@@ -1,84 +1,54 @@
 import Color from '../lib/Color';
 
+const tests = [
+	{ hexIn: '#aaa', hexOut: 'AAAAAA', rgb: [170, 170, 170], hsl: [0, 0, 67] },
+	{ hexIn: '#000', hexOut: '000000', rgb: [0, 0, 0], hsl: [0, 0, 0] },
+	{ hexIn: '#f6f6f6', hexOut: 'F6F6F6', rgb: [246, 246, 246], hsl: [0, 0, 96] },
+	{ hexIn: '#f00', hexOut: 'FF0000', rgb: [255, 0, 0], hsl: [0, 100, 50] },
+	{ hexIn: '#81BFE8', hexOut: '81BFE8', rgb: [129, 191, 232], hsl: [204, 69, 71] },
+	{ hexIn: '#1a4c5a', hexOut: '1A4C5A', rgb: [26, 76, 90], hsl: [193, 55, 23] },
+	{ hexIn: '#186276', hexOut: '186276', rgb: [24, 98, 118], hsl: [193, 66, 28] }
+];
+
 it('throws error for invalid HEX code', () => {
 	const invalidCharacters = () => Color.fromHex('xxx');
 	expect(invalidCharacters).toThrowError();
-
 	const invalidLength = () => Color.fromHex('1111');
 	expect(invalidLength).toThrowError();
-})
+});
 
 it('can convert HEX to HEX', () => {
-	let alpha = Color.fromHex('#aaa');
-	expect(alpha.toHex()).toBe('AAAAAA');
-
-	let numeric = Color.fromHex('#000000');
-	expect(numeric.toHex()).toBe('000000');
-
-	let alphanumeric = Color.fromHex('#0380D2');
-	expect(alphanumeric.toHex()).toBe('0380D2');
-
-	let alphanumericShort = Color.fromHex('#f00');
-	expect(alphanumericShort.toHex()).toBe('FF0000');
-})
+	tests.forEach(color => {
+		expect(Color.fromHex(color.hexIn).toHex()).toBe(color.hexOut);
+	});
+});
 
 it('can convert RGB to HEX', () => {
-	let alpha = Color.fromRGB(170, 170, 170);
-	expect(alpha.toHex()).toBe('AAAAAA');
-
-	let numeric = Color.fromRGB(0, 0, 0);
-	expect(numeric.toHex()).toBe('000000');
-
-	let alphanumeric = Color.fromRGB(246, 246, 246);
-	expect(alphanumeric.toHex()).toBe('F6F6F6');
-})
+	tests.forEach(color => {
+		expect(Color.fromRGB(...color.rgb).toHex()).toBe(color.hexOut);
+	});
+});
 
 it('can convert HEX to an RGB array', () => {
-	let alpha = Color.fromHex('#aaa');
-	expect(alpha.toRGB()).toEqual([170, 170, 170]);
-
-	let numeric = Color.fromHex('#000000');
-	expect(numeric.toRGB()).toEqual([0, 0, 0]);
-
-	let alphanumeric = Color.fromHex('#f6f6f6');
-	expect(alphanumeric.toRGB()).toEqual([246, 246, 246]);
-
-	let alphanumericShort = Color.fromHex('#f00');
-	expect(alphanumericShort.toRGB()).toEqual([255, 0, 0]);
-})
+	tests.forEach(color => {
+		expect(Color.fromHex(color.hexIn).toRGB()).toEqual(color.rgb);
+	});
+});
 
 it('can convert HEX to an RGB string', () => {
-	let alpha = Color.fromHex('#aaa');
-	expect(alpha.toRGBString()).toBe('170, 170, 170');
-
-	let numeric = Color.fromHex('#000000');
-	expect(numeric.toRGBString()).toBe('0, 0, 0');
-
-	let alphanumeric = Color.fromHex('#f6f6f6');
-	expect(alphanumeric.toRGBString()).toBe('246, 246, 246');
-
-	let alphanumericShort = Color.fromHex('#f00');
-	expect(alphanumericShort.toRGBString()).toBe('255, 0, 0');
-})
+	tests.forEach(color => {
+		expect(Color.fromHex(color.hexIn).toRGBString()).toEqual(color.rgb.join(', '));
+	});
+});
 
 it('can convert HEX to an HSL array', () => {
-	let alpha = Color.fromHex('aaa');
-	expect(alpha.toHSL()).toEqual([0, 0, 67]);
-
-	let alphanumeric = Color.fromHex('1a4c5a');
-	expect(alphanumeric.toHSL()).toEqual([193, 55, 23]);
-	
-	let numeric = Color.fromHex('186276');
-	expect(numeric.toHSL()).toEqual([193, 66, 28]);
-})
+	tests.forEach(color => {
+		expect(Color.fromHex(color.hexIn).toHSL()).toEqual(color.hsl);
+	});
+});
 
 it('can convert HEX to an HSL string', () => {
-	let alpha = Color.fromHex('aaa');
-	expect(alpha.toHSLString()).toBe('0, 0%, 67%');
-
-	let alphanumeric = Color.fromHex('1a4c5a');
-	expect(alphanumeric.toHSLString()).toBe('193, 55%, 23%');
-	
-	let numeric = Color.fromHex('186276');
-	expect(numeric.toHSLString()).toBe('193, 66%, 28%');
-})
+	tests.forEach(color => {
+		expect(Color.fromHex(color.hexIn).toHSLString()).toEqual(`${color.hsl[0]}, ${color.hsl[1]}%, ${color.hsl[2]}%`);
+	});
+});
