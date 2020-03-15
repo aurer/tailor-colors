@@ -1,26 +1,25 @@
-import NumberWang from './NumberWang';
+import NumberFill from './NumberFill';
 import Color from './Color';
 
 export default class ColorBlend {
-	static colorsBetween(color1, color2, steps) {
-		let rgb1 = Color.fromHex(color1).toRGB();
-		let rgb2 = Color.fromHex(color2).toRGB();
+	static colorsBetween(fromColor, toColor, steps) {
+		let fromRGB = Color.fromHex(fromColor).toRGB();
+		let toRGB = Color.fromHex(toColor).toRGB();
 
-		let reds = NumberWang.numbersBetweenInclusive(rgb1[0], rgb2[0], steps);
-		let greens = NumberWang.numbersBetweenInclusive(rgb1[1], rgb2[1], steps);
-		let blues = NumberWang.numbersBetweenInclusive(rgb1[2], rgb2[2], steps);
-		
-		reds = reds.map(c => Math.floor(c));
-		greens = greens.map(c => Math.floor(c));
-		blues = blues.map(c => Math.floor(c));
-		
+		let reds = NumberFill.numbersBetweenInclusive(fromRGB[0], toRGB[0], steps).map(c => Math.floor(c));
+		let greens = NumberFill.numbersBetweenInclusive(fromRGB[1], toRGB[1], steps).map(c => Math.floor(c));
+		let blues = NumberFill.numbersBetweenInclusive(fromRGB[2], toRGB[2], steps).map(c => Math.floor(c));
+
 		let colors = [];
-		for(let i = 0; i < reds.length; i++) {
-			let hex = Color.fromRGB(reds[i], greens[i], blues[i]).toHex();
-			colors.push(hex);
+		for (let i = 0; i < steps + 2; i++) {
+			let color = Color.fromRGB(reds[i], greens[i], blues[i]);
+			colors.push(color);
 		}
 
-		return colors;
-
+		return {
+			asHex: () => colors.map(c => c.toHex()),
+			asRGB: () => colors.map(c => c.toRGB()),
+			asHSL: () => colors.map(c => c.toHSL())
+		};
 	}
 }
