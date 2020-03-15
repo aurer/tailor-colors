@@ -2,7 +2,7 @@ class Color {
 	red = null;
 	green = null;
 	blue = null;
-	
+
 	static fromHex(hex) {
 		let rgb = this._hexToRgb(hex);
 		return new Color(...Object.values(rgb));
@@ -42,13 +42,19 @@ class Color {
 	}
 
 	static _calculateSaturation(luminance, min, max) {
-		if (max === min) return 0;
+		let saturation = 0;
 
-		if (luminance < 0.5) {
-			return (max - min) / (max + min)
+		if (max === min) {
+			return saturation;
 		}
 
-		return Math.round((max - min) / (2.0 - max - min) * 100)
+		if (luminance < 0.5) {
+			saturation = (max - min) / (max + min);
+		} else {
+			saturation = (max - min) / (2.0 - max - min);
+		}
+
+		return Math.round(saturation * 100);
 	}
 
 	static _calculateHue(r, g, b) {
@@ -62,11 +68,9 @@ class Color {
 		let hue = 0;
 		if (r === max) {
 			hue = (g - b) / (max - min);
-		}
-		else if (g === max) {
+		} else if (g === max) {
 			hue = 2.0 + (b - r) / (max - min);
-		}
-		else if (b === max) {
+		} else if (b === max) {
 			hue = 4.0 + (r - g) / (max - min);
 		}
 
@@ -90,12 +94,16 @@ class Color {
 		if (!this._isValidHex(hex)) {
 			throw new Error(`Expected a valid 3 or 6 digit HEX code but got '${hex}'`);
 		}
-		
+
 		if (hex.length == 6) {
 			return hex.toUpperCase();
 		}
 
-		return hex.split('').map(char => char.toString() + char.toString()).join('').toUpperCase();
+		return hex
+			.split('')
+			.map(char => char.toString() + char.toString())
+			.join('')
+			.toUpperCase();
 	}
 
 	static _isValidHex(hex) {
@@ -118,7 +126,7 @@ class Color {
 		let luminance = (max + min) / 2;
 		let saturation = Color._calculateSaturation(luminance, min, max);
 		let hue = Color._calculateHue(r, g, b);
-		return [hue, Math.round(saturation *  100), Math.round(luminance * 100)];
+		return [hue, saturation, Math.round(luminance * 100)];
 	}
 }
 
