@@ -23,6 +23,7 @@
 	],
 	"devDependencies": {
 		"react-scripts": "^3.4.0",
-		"sass": "^1.26.3"
+		"sass": "^1.26.3",
+		"typescript": "^3.8.3"
 	}
 }
