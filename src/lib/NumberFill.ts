@@ -30,7 +30,7 @@ export default class NumberWang {
 	static getNextNonNullValue(array: number[], startIndex: number) {
 		let seekIndex: number = 1;
 		let seekCount: number = 0;
-		let seekValue: number = null;
+		let seekValue: number | null = null;
 
 		while (seekValue === null) {
 			seekValue = array[startIndex + seekIndex++];

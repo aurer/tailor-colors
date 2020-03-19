@@ -117,7 +117,7 @@ export default class Color {
 		return red.padStart(2, '0') + green.padStart(2, '0') + blue.padStart(2, '0');
 	}
 
-	static _rgbToHSL(r, g, b): Array<number> {
+	static _rgbToHSL(r: number, g: number, b: number): Array<number> {
 		r /= 255;
 		g /= 255;
 		b /= 255;
