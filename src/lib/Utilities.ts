@@ -6,7 +6,7 @@ export const uuid = function(): string {
 	});
 };
 
-export const nameWithSuffix = function(name: string, suffix: string): string {
+export const nameWithSuffix = function(name: string, suffix?: string | null): string {
 	let result = `color-${name}`;
 	if (suffix && suffix.length > 0) {
 		result += `-${suffix}`;

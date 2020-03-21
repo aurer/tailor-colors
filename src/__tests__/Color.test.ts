@@ -25,7 +25,8 @@ it('can convert HEX to HEX', () => {
 
 it('can convert RGB to HEX', () => {
 	tests.forEach(color => {
-		expect(Color.fromRGB(...color.rgb).toHex()).toBe(color.hexOut);
+		let [r, g, b] = color.rgb;
+		expect(Color.fromRGB(r, g, b).toHex()).toBe(color.hexOut);
 	});
 });
 

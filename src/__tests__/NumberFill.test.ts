@@ -45,7 +45,7 @@ it('get the interval 5 for 1 * 2', () => {
 
 // fill blanks
 it('fills single gaps', () => {
-	let input = [null, 1, null];
+	let input: Array<number | null> = [null, 1, null];
 	let result = NumberFill.fillBlanks(input);
 	expect(result).toEqual([0, 1, 2]);
 });

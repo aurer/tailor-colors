@@ -5,7 +5,7 @@ interface FoundNumber {
 }
 
 export default class NumberWang {
-	static fillBlanks(array: number[]) {
+	static fillBlanks(array: Array<number | null>) {
 		if (array[0] === null) {
 			array[0] = 0;
 		}
@@ -15,7 +15,7 @@ export default class NumberWang {
 		}
 
 		let output: number[] = [];
-		array.forEach((element: number, index: number) => {
+		array.forEach((element: number | null, index: number) => {
 			if (element === null) {
 				let prev: number = output[index - 1];
 				let seek: FoundNumber = this.getNextNonNullValue(array, index);
@@ -27,7 +27,7 @@ export default class NumberWang {
 		return output;
 	}
 
-	static getNextNonNullValue(array: number[], startIndex: number) {
+	static getNextNonNullValue(array: Array<number | null>, startIndex: number) {
 		let seekIndex: number = 1;
 		let seekCount: number = 0;
 		let seekValue: number | null = null;
