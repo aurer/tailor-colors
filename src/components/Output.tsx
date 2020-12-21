@@ -6,7 +6,7 @@ import '../styles/Output.scss'
 export interface OutputProps {}
 
 interface OutputState {
-	language: OutputType
+	outputType: OutputType
 }
 
 enum OutputType {
@@ -17,17 +17,15 @@ enum OutputType {
 }
 
 class Output extends React.Component<OutputProps, OutputState> {
-	languages = Object.values(OutputType)
-
 	constructor(props: OutputProps) {
 		super(props)
 		this.state = {
-			language: this.languages[0],
+			outputType: OutputType.SASS,
 		}
 	}
 
-	setOutputType(language: OutputType) {
-		this.setState({ language })
+	setOutputType(outputType: OutputType) {
+		this.setState({ outputType })
 	}
 
 	render() {
@@ -36,10 +34,10 @@ class Output extends React.Component<OutputProps, OutputState> {
 				{(context: ColorContextProps) => (
 					<div className="Output">
 						<div className="Output-options">
-							{this.languages.map((lang: OutputType) => (
+							{Object.values(OutputType).map((lang: OutputType) => (
 								<button
 									key={lang}
-									className={lang === this.state.language ? 'is-active' : ''}
+									className={lang === this.state.outputType ? 'is-active' : ''}
 									onClick={this.setOutputType.bind(this, lang)}
 								>
 									{lang}
@@ -47,9 +45,9 @@ class Output extends React.Component<OutputProps, OutputState> {
 							))}
 						</div>
 						<div className="Output-code">
-							{this.state.language !== OutputType.JSON &&
-								context.groups.map((group) => this.renderVars(group, this.state.language))}
-							{this.state.language === OutputType.JSON && this.renderJson(context.groups)}
+							{this.state.outputType !== OutputType.JSON &&
+								context.groups.map((group) => this.renderVars(group, this.state.outputType))}
+							{this.state.outputType === OutputType.JSON && this.renderJson(context.groups)}
 						</div>
 					</div>
 				)}
@@ -66,10 +64,10 @@ class Output extends React.Component<OutputProps, OutputState> {
 		return <pre>{JSON.stringify(groups, null, '  ')}</pre>
 	}
 
-	renderVars(group: Group, language: OutputType) {
+	renderVars(group: Group, outputType: OutputType) {
 		let name = `// ${group.name} colors`
 
-		if (language === OutputType.CSS) {
+		if (outputType === OutputType.CSS) {
 			name = `/* ${group.name} colors */`
 		}
 
@@ -77,7 +75,7 @@ class Output extends React.Component<OutputProps, OutputState> {
 			<React.Fragment key={group.id}>
 				<pre>
 					<span className="comment">{name}</span>
-					{group.colors.map((color) => this.renderVar(group.name, color, language))}
+					{group.colors.map((color) => this.renderVar(group.name, color, outputType))}
 					<span className="spacer"></span>
 				</pre>
 				<br />
@@ -85,11 +83,11 @@ class Output extends React.Component<OutputProps, OutputState> {
 		)
 	}
 
-	renderVar(groupName: string, color: ColorObject, language: OutputType) {
+	renderVar(groupName: string, color: ColorObject, outputType: OutputType) {
 		let string
 		let name = nameWithSuffix(groupName, color.suffix)
 
-		switch (language) {
+		switch (outputType) {
 			case OutputType.SASS:
 				string = '$' + name + ': #' + color.value + ';'
 				break
