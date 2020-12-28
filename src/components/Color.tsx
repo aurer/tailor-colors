@@ -20,6 +20,16 @@ const Color = (props: ColorProps) => {
 		props.onChange(props.color.suffix, value)
 	}
 
+	function handleColorInputPaste(e: any) {
+		const data = e.clipboardData.getData('text')
+		if (data.length) {
+			e.stopPropagation()
+			e.preventDefault()
+			let value = cleanHex(data)
+			props.onChange(props.color.suffix, value)
+		}
+	}
+
 	function handleUnlock(): void {
 		props.onChangeMode(props.color.suffix, !props.color.auto)
 	}
@@ -54,7 +64,12 @@ const Color = (props: ColorProps) => {
 			</div>
 			<div className="Color-settings">
 				<div className="Color-format">#</div>
-				<input type="text" value={props.color.value} onChange={handleColorInputChange} />
+				<input
+					type="text"
+					value={props.color.value}
+					onChange={handleColorInputChange}
+					onPaste={handleColorInputPaste}
+				/>
 				{!master && !auto && (
 					<button className="Color-reset" title="Reset color" onClick={handleUnlock}>
 						<Undo />
