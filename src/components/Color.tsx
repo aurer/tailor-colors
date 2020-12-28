@@ -1,5 +1,5 @@
-import React, { ChangeEvent, CSSProperties, useEffect } from 'react'
-import { nameWithSuffix } from '../lib/Utilities'
+import React, { ChangeEvent, CSSProperties } from 'react'
+import { nameWithSuffix, cleanHex } from '../lib/Utilities'
 import '../styles/Color.scss'
 import { ColorObject } from './ColorContext'
 import { Undo } from './Icons'
@@ -15,8 +15,6 @@ export interface ColorProps {
 }
 
 const Color = (props: ColorProps) => {
-	useEffect(() => {}, [props.color.value])
-
 	function handleColorInputChange(e: ChangeEvent<HTMLInputElement>) {
 		let value = sanitiseHexColor(e.target.value)
 		props.onChange(props.color.suffix, value)
@@ -26,13 +24,12 @@ const Color = (props: ColorProps) => {
 		props.onChangeMode(props.color.suffix, !props.color.auto)
 	}
 
-	// TODO: replace 'any' type with sensible type
-	function sanitiseHexColor(color: any) {
+	function sanitiseHexColor(color: string) {
 		return color.replace('#', '').slice(0, 6)
 	}
 
 	let name: string = nameWithSuffix(props.group, props.color.suffix)
-	let color: string = '#' + sanitiseHexColor(props.color.value)
+	let color: string = '#' + cleanHex(sanitiseHexColor(props.color.value))
 	let style: CSSProperties = { backgroundColor: color }
 	let className: string = 'Color'
 	let master: boolean = false

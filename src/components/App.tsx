@@ -1,8 +1,8 @@
 import React from 'react'
 import { ErrorBoundary } from '@sentry/react'
 import ColorGroups from './ColorGroups'
-import Menu from './Menu'
 import { ColorProvider } from './ColorContext'
+import Menu from './Menu'
 import '../styles/App.scss'
 
 const App = () => {

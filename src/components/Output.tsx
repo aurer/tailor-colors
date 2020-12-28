@@ -1,5 +1,6 @@
 import React from 'react'
-import { ColorContext, Group, ColorObject, ColorContextProps } from './ColorContext'
+import { ColorContext, ColorObject, ColorContextInterface } from './ColorContext'
+import ColorSet from '../lib/ColorSet'
 import { nameWithSuffix } from '../lib/Utilities'
 import '../styles/Output.scss'
 
@@ -31,7 +32,7 @@ class Output extends React.Component<OutputProps, OutputState> {
 	render() {
 		return (
 			<ColorContext.Consumer>
-				{(context: ColorContextProps) => (
+				{(context: ColorContextInterface) => (
 					<div className="Output">
 						<div className="Output-options">
 							{Object.values(OutputType).map((lang: OutputType) => (
@@ -55,16 +56,19 @@ class Output extends React.Component<OutputProps, OutputState> {
 		)
 	}
 
-	renderJson(groups: Group[]) {
+	renderJson(groups: any[]) {
 		groups = groups.map((group) => {
-			// delete group.id
-			return group
+			return {
+				name: group.name,
+				contrastValue: group.contrastValue,
+				colors: group.colors,
+			}
 		})
 
 		return <pre>{JSON.stringify(groups, null, '  ')}</pre>
 	}
 
-	renderVars(group: Group, outputType: OutputType) {
+	renderVars(group: ColorSet, outputType: OutputType) {
 		let name = `// ${group.name} colors`
 
 		if (outputType === OutputType.CSS) {

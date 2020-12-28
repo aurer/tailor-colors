@@ -1,67 +1,67 @@
 interface FoundNumber {
-	value: number;
-	index: number;
-	skipped: number;
+	value: number
+	index: number
+	skipped: number
 }
 
-export default class NumberWang {
+export default class NumberFill {
 	static fillBlanks(array: Array<number | null>) {
 		if (array[0] === null) {
-			array[0] = 0;
+			array[0] = 0
 		}
 
 		if (array[array.length - 1] === null) {
-			array[array.length - 1] = array.length - 1;
+			array[array.length - 1] = array.length - 1
 		}
 
-		let output: number[] = [];
+		let output: number[] = []
 		array.forEach((element: number | null, index: number) => {
 			if (element === null) {
-				let prev: number = output[index - 1];
-				let seek: FoundNumber = this.getNextNonNullValue(array, index);
-				element = prev + this.intervalBetween(prev, seek.value, seek.skipped);
+				let prev: number = output[index - 1]
+				let seek: FoundNumber = this.getNextNonNullValue(array, index)
+				element = prev + this.intervalBetween(prev, seek.value, seek.skipped)
 			}
-			output[index] = element;
-		});
+			output[index] = element
+		})
 
-		return output;
+		return output
 	}
 
 	static getNextNonNullValue(array: Array<number | null>, startIndex: number) {
-		let seekIndex: number = 1;
-		let seekCount: number = 0;
-		let seekValue: number | null = null;
+		let seekIndex: number = 1
+		let seekCount: number = 0
+		let seekValue: number | null = null
 
 		while (seekValue === null) {
-			seekValue = array[startIndex + seekIndex++];
-			seekCount++;
+			seekValue = array[startIndex + seekIndex++]
+			seekCount++
 		}
 
 		return {
 			value: seekValue,
 			index: startIndex + seekIndex,
-			skipped: seekCount
-		};
+			skipped: seekCount,
+		}
 	}
 
 	static numbersBetween(start: number, end: number, steps: number) {
-		let values: number[] = [];
-		let interval: number = this.intervalBetween(start, end, steps);
+		let values: number[] = []
+		let interval: number = this.intervalBetween(start, end, steps)
 		for (let i = 0; i < steps; i++) {
-			let newValue: number = start + interval + interval * i;
-			values.push(newValue);
+			let newValue: number = start + interval + interval * i
+			values.push(newValue)
 		}
-		return values;
+		return values
 	}
 
 	static numbersBetweenInclusive(start: number, end: number, steps: number) {
-		let values: number[] = this.numbersBetween(start, end, steps);
-		values.unshift(start);
-		values.push(end);
-		return values;
+		let values: number[] = this.numbersBetween(start, end, steps)
+		values.unshift(start)
+		values.push(end)
+		return values
 	}
 
 	static intervalBetween(start: number, end: number, steps: number) {
-		return (end - start) / (steps + 1);
+		return (end - start) / (steps + 1)
 	}
 }
