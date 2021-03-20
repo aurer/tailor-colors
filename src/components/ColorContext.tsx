@@ -60,11 +60,20 @@ export class ColorProvider extends React.Component implements ColorProviderInter
 		newGroups.push(newGroup)
 
 		this.setState({ groups: [...newGroups] })
+		gtag('event', 'add_color_group', {
+			event_category: 'interaction',
+			event_label: groupName,
+		})
 	}
 
 	removeGroup = (id: string) => {
+		let removed = this.state.groups.find((group) => group.id === id)
 		let groups = this.state.groups.filter((group) => group.id !== id)
 		this.setState({ groups })
+		gtag('event', 'remove_color_group', {
+			event_category: 'interaction',
+			event_label: removed?.name,
+		})
 	}
 
 	removeLast = () => {
@@ -74,13 +83,19 @@ export class ColorProvider extends React.Component implements ColorProviderInter
 	}
 
 	renameGroup = (groupId: String, newName: string) => {
+		let previousName
 		let groups = this.state.groups.map((group) => {
 			if (group.id === groupId) {
+				previousName = group.name
 				group.name = newName.trim().toLowerCase().replace(' ', '-').replace(/\W/, '')
 			}
 			return group
 		})
 		this.setState({ groups })
+		gtag('event', 'rename_color_group', {
+			event_category: 'interaction',
+			event_label: `${previousName} > ${newName}`,
+		})
 	}
 
 	updateColor = (groupId: string, colorSuffix: string, newValue: string) => {

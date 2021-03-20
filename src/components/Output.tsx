@@ -27,6 +27,10 @@ class Output extends React.Component<OutputProps, OutputState> {
 
 	setOutputType(outputType: OutputType) {
 		this.setState({ outputType })
+		gtag('event', 'switch_output', {
+			event_category: 'interaction',
+			event_label: outputType,
+		})
 	}
 
 	render() {
